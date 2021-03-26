@@ -31,7 +31,7 @@ const slug = (props) => {
         <PublicationHeader
           Title={Title}
           Author={Publisher}
-          Thumbnail={Thumbnail?.formats?.small?.url}
+          Thumbnail={Thumbnail?.formats.small.url}
           BackgroundColor={ThumbnailBgColorHex}
           PublicationDate={Publication}
           TitleColor={TitleColor}
