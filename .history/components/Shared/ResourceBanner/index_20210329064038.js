@@ -129,19 +129,6 @@ const ResourceBanner = (props) => {
                         box-shadow: 5px 5px 20px rgba(100, 100, 100, 0.4);
                     }
                 }
-                @media screen and (max-width: ${breakpoints.tabletSmall}) {
-                    .banner-container {
-                        grid-template-columns: 1fr;
-                        grid-template-rows: auto 250px;
-                        column-gap: 15px;
-                    }
-                    .thumbnail {
-                        width: 153px;
-                        padding-bottom: 0;
-                        height: 181px;
-                        min-width: 135px;
-                    }
-                }
             `}</style>
         </>
     )

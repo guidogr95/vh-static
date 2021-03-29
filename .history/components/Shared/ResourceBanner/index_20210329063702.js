@@ -99,48 +99,6 @@ const ResourceBanner = (props) => {
                         grid-template-rows: auto 250px;
                         column-gap: 15px;
                     }
-                    .thumbnail {
-                        width: 30%;
-                        padding-bottom: 35%;
-                        min-width: 135px;
-                    }
-                }
-                @media screen and (max-width: ${breakpoints.tabletLarge}) {
-                    .banner-container {
-                        background: linear-gradient(to left, #6536ff, #2a1659);
-                        min-height: 300px;
-                        width: 100%;
-                        border-radius: ${borderRadius};
-                        margin-top: 30px;
-                        display: grid;
-                        grid-template-columns: repeat(2, 1fr);
-                        grid-template-rows: 1fr;
-                        column-gap: 15px;
-                    }
-                    .thumbnail {
-                        width: 45%;
-                        padding-bottom: 60%;
-                        border-radius: ${borderRadius};
-                        background: url(${thumbnail});
-                        background-size: cover;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        min-width: 135px;
-                        box-shadow: 5px 5px 20px rgba(100, 100, 100, 0.4);
-                    }
-                }
-                @media screen and (max-width: ${breakpoints.tabletSmall}) {
-                    .banner-container {
-                        grid-template-columns: 1fr;
-                        grid-template-rows: auto 250px;
-                        column-gap: 15px;
-                    }
-                    .thumbnail {
-                        width: 153px;
-                        padding-bottom: 0;
-                        height: 181px;
-                        min-width: 135px;
-                    }
                 }
             `}</style>
         </>

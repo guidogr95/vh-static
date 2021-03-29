@@ -136,9 +136,8 @@ const ResourceBanner = (props) => {
                         column-gap: 15px;
                     }
                     .thumbnail {
-                        width: 153px;
-                        padding-bottom: 0;
-                        height: 181px;
+                        width: 30%;
+                        padding-bottom: 35%;
                         min-width: 135px;
                     }
                 }
