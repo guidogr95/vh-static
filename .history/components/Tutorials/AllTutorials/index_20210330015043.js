@@ -2,7 +2,7 @@
 import { desktopMaxWidth } from 'styles/theme'
 // Components
 import TutorialPostCard from 'components/Shared/TutorialPostCard'
-import ResourceSearchBar from 'components/Shared/ResourceSearchBar'
+import TutorialSearchBar from 'components/Tutorials/AllTutorials/TutorialSearchBar'
 // Utils
 import Masonry from 'react-masonry-css'
 import shuffleArray from 'utils/shuffleArray'
@@ -20,10 +20,8 @@ const AllTutorials = ({ Tutorials, ComponentProps }) => {
         <>
             <section className="containerSection" >
                 <main>
-                    <ResourceSearchBar
-                        Resources={Tutorials}
-                        SlugPrefix="/resources/tutorials"
-                        Placeholder="Search Tutorials..."
+                    <TutorialSearchBar
+                        Tutorials={Tutorials}
                     />
                     <h2 className="sectionTitle" >Latest Tutorials</h2>
                     <aside>
@@ -33,6 +31,7 @@ const AllTutorials = ({ Tutorials, ComponentProps }) => {
                             columnClassName="my-masonry-grid_column"
                         >
                             { shuffleArray(Tutorials).map(tutorial => {
+                                console.log(tutorial)
                                 return (
                                     <TutorialPostCard
                                         key={tutorial.published_at}

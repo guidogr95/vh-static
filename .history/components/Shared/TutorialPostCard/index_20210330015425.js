@@ -85,7 +85,7 @@ const TutorialPostCard = ({ Title, Thumbnail, Slug, Content }) => {
                     transition: .3s ease-out all;
                 }
                 ._description {
-                    padding: 20px;
+                    padding: 30px;
                     min-height: 90px;
                     display: flex;
                     flex-direction: column;
@@ -99,7 +99,7 @@ const TutorialPostCard = ({ Title, Thumbnail, Slug, Content }) => {
                     font-size: 1.4em;
                 }
                 ._footer {
-                    padding: 20px;
+                    padding: 30px;
                     border-top: 1px solid rgba(100, 100, 100, 0.2);
                     display: flex;
                     justify-content: space-between;

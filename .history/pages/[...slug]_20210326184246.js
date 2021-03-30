@@ -38,7 +38,7 @@ export async function getStaticPaths () {
   const res = await axios.get(`${apiUrl}/pages`, { headers: { Authorization: `Bearer ${apiToken}` } })
   const pages = res.data
   // Get the paths we want to pre-render based on pages. Exclude home page
-  const paths = getPaths(pages).filter(page => page !== '/home')
+  const paths = getPaths(pages).filter(page => page !== '/home' || page !== '/tutorials')
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false }

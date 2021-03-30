@@ -6,7 +6,6 @@ import useProgressiveImage from 'utils/useProgressiveImage'
 import { borderRadius, colors, breakpoints } from 'styles/theme'
 // Assets
 import { FiChevronRight } from 'react-icons/fi'
-import WhiteLogo from 'public/assets/media/brand/std-vertical-white.svg'
 
 const TutorialPostCard = ({ Title, Thumbnail, Slug, Content }) => {
 
@@ -27,7 +26,7 @@ const TutorialPostCard = ({ Title, Thumbnail, Slug, Content }) => {
                         <span>{Title}</span>
                     </a>
                 </Link>
-                <div className={`thumbnail${!Thumbnail ? ' no-thumbnail' : ''}${!loaded ? ' loading' : ''}`} />
+                <div className={`thumbnail ${!loaded ? 'loading' : ''}`} />
                 <div className="body" >
                     <div className="_description" >
                         <span>{Title}</span>
@@ -53,7 +52,8 @@ const TutorialPostCard = ({ Title, Thumbnail, Slug, Content }) => {
                 }
                 .thumbnail {
                     width: 100%;
-                    padding-bottom: 52%;
+                    height: 210px;
+                    min-height: 210px;
                     background: url(${Thumbnail});
                     background-size: cover;
                     background-repeat: no-repeat;
@@ -62,30 +62,8 @@ const TutorialPostCard = ({ Title, Thumbnail, Slug, Content }) => {
                 .thumbnail.loading {
                     animation: loadingAnimation 1s infinite;
                 }
-                .thumbnail.no-thumbnail {
-                    position: relative;
-                }
-                .thumbnail.no-thumbnail:after, 
-                .thumbnail.no-thumbnail:before {
-                    background: ${colors.night};
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    z-index: 1;
-                }
-                .thumbnail.no-thumbnail:before {
-                    z-index: 2;
-                    background: url(${WhiteLogo});
-                    background-repeat: no-repeat;
-                    background-size: 25%;
-                    background-position: center;
-                    transition: .3s ease-out all;
-                }
                 ._description {
-                    padding: 20px;
+                    padding: 30px;
                     min-height: 90px;
                     display: flex;
                     flex-direction: column;
@@ -99,7 +77,7 @@ const TutorialPostCard = ({ Title, Thumbnail, Slug, Content }) => {
                     font-size: 1.4em;
                 }
                 ._footer {
-                    padding: 20px;
+                    padding: 30px;
                     border-top: 1px solid rgba(100, 100, 100, 0.2);
                     display: flex;
                     justify-content: space-between;
