@@ -1,0 +1,65 @@
+// Components
+import BaseMultiplierPricingItem from 'components/Shared/PricingCalculator/BaseMultiplierPricingItem'
+import RatePricingItem from 'components/Shared/PricingCalculator/RatePricingItem'
+
+const PricingSection = ({ icon, label, sectionPricingData }) => {
+  return (
+    <>
+      <div className="section" >
+        <div className="section__icon-label" >
+          <img src={icon} alt="pricing-icon" />
+          {label && <label>{label}</label>}
+        </div>
+        <div className="section__pricing" >
+          {Object.entries(sectionPricingData).map(pricingData => {
+            return (
+              Object.values(pricingData[1]).map(pricingItem => {
+                switch (pricingData[0]) {
+                  case 'baseMultiplierPricingItems':
+                    return (
+                      <BaseMultiplierPricingItem
+                        key={pricingItem.label}
+                        pricingTable={pricingItem.pricingTable}
+                        legendData={pricingItem.legendData}
+                        label={pricingItem.label}
+                      />
+                    )
+                  case 'ratePricingItems':
+                    return (
+                      <RatePricingItem
+                        key={pricingItem.label}
+                        pricingTable={pricingItem.pricingTable}
+                        label={pricingItem.label}
+                      />
+                    )
+                  default:
+                    return null
+                }
+              })
+            )
+          })}
+        </div>
+      </div>
+      <style jsx>{`
+        .section {
+          display: grid;
+          grid-template-columns: 150px auto;
+          column-gap: 30px;
+        }
+        .section__icon-label {
+          width: 100%;
+          padding: 0 15px;
+          text-align: center;
+        }
+        .section__icon-label label {
+          margin: 15px 0 0 0;
+        }
+        .section__icon img {
+          width: 100%;
+        }
+      `}</style>
+    </>
+  )
+}
+
+export default PricingSection
