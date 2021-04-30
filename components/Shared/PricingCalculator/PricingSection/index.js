@@ -1,27 +1,45 @@
 import { useRef } from 'react'
 // Components
-import BaseMultiplierPricingItem from 'components/Shared/PricingCalculator/BaseMultiplierPricingItem'
+import BaseMultiplierPricingItems from 'components/Shared/PricingCalculator/BaseMultiplierPricingItems'
 import RatePricingItem from 'components/Shared/PricingCalculator/RatePricingItem'
 // Theme
-import { borderRadius, calculatorStyles, colors, shadows, gradients } from 'styles/theme'
+import { borderRadius, calculatorStyles, colors, shadows } from 'styles/theme'
+// Assets
+import { FaMinus, FaPlus } from 'react-icons/fa'
 
 const PricingSection = ({ icon, label, sectionPricingData }) => {
   const bodyRef = useRef(null)
+  const headerRef = useRef(null)
 
-  const handleAccordion = () => {
-    bodyRef.current.classList.toggle('active')
-    if (bodyRef.current.classList.contains('active')) {
-        bodyRef.current.style.maxHeight = `${bodyRef.current.scrollHeight}px`
+  const handleAccordion = ({ forceResize }) => {
+    if (!forceResize) {
+      bodyRef.current.classList.toggle('active')
+      headerRef.current.classList.toggle('active')
+      if (bodyRef.current.classList.contains('active')) {
+          bodyRef.current.style.maxHeight = `${bodyRef.current.scrollHeight}px`
+      } else {
+          bodyRef.current.style.maxHeight = '0px'
+      }
     } else {
-        bodyRef.current.style.maxHeight = '0px'
+      if (!bodyRef.current.classList.contains('active')) return
+      bodyRef.current.style.maxHeight = `${bodyRef.current.scrollHeight}px`
     }
   }
   return (
     <>
       <div className="pricing-section" >
-        <div className="pricing-section__icon-label" onClick={handleAccordion} >
-          <img src={icon} className="pricing-icon" alt={label}/>
-          {label && <h5>{label}</h5>}
+        <div className="pricing-section__icon-label" ref={headerRef} onClick={handleAccordion} >
+          <div className="accordion-label__label" >
+            <img src={icon} className="pricing-icon" alt={label}/>
+            {label && <h5>{label}</h5>}
+          </div>
+
+          <div className="accordion-label__btn" >
+            <div className="btn-wrapper" >
+              <FaMinus className="opened" />
+              <FaPlus className="closed" />
+            </div>
+          </div>
         </div>
         <article className="pricing-section__pricing" ref={bodyRef} >
           <div className="pricing-section__pricing-wrapper" >
@@ -29,13 +47,15 @@ const PricingSection = ({ icon, label, sectionPricingData }) => {
               switch (pricingItem.type) {
                 case 'baseMultiplier':
                   return (
-                    <BaseMultiplierPricingItem
+                    <BaseMultiplierPricingItems
                       key={pricingItem.label}
                       pricingTable={pricingItem.pricingTable}
                       legendData={pricingItem.legendData}
                       description={pricingItem.description}
                       label={pricingItem.label}
                       id={pricingItem.id}
+                      isMultiple={pricingItem.isMultiple}
+                      handleAccordion={handleAccordion}
                     />
                   )
                 case 'ratePricing':
@@ -44,10 +64,11 @@ const PricingSection = ({ icon, label, sectionPricingData }) => {
                       key={pricingItem.label}
                       pricingTable={pricingItem.pricingTable}
                       label={pricingItem.label}
-                      multiple={pricingItem.multiple}
+                      isMultiple={pricingItem.isMultiple}
                       description={pricingItem.description}
                       placeholder={pricingItem.placeholderLabel}
                       id={pricingItem.id}
+                      handleAccordion={handleAccordion}
                     />
                   )
                 default:
@@ -61,9 +82,7 @@ const PricingSection = ({ icon, label, sectionPricingData }) => {
         .pricing-section {
           display: flex;
           flex-direction: column;
-          /* margin: ${calculatorStyles.pricingSectionMargin}; */
           box-shadow: ${shadows.white};
-          /* padding: ${calculatorStyles.pricingSectionPadding}; */
           border-radius: ${borderRadius};
           overflow: hidden;
         }
@@ -71,28 +90,58 @@ const PricingSection = ({ icon, label, sectionPricingData }) => {
           width: 100%;
           text-align: center;
           display: flex;
+          justify-content: space-between;
           align-items: center;
           height: 130px;
           padding: ${calculatorStyles.pricingSectionHeaderPadding};
-          /* background: ${gradients.lightDay}; */
           background: ${colors.lightWhite};
           cursor: pointer;
+        }
+        .accordion-label__btn {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .accordion-label__btn .btn-wrapper {
+          height: 20px;
+          width: 20px;
+        }
+        .accordion-label__btn :global(svg) {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          top: 0;
+          left: 0;
+          color: ${colors.day};
+          transition: .3s ease-out all;
+        }
+        .accordion-label__label {
+          display: flex;
+          height: 100%;
+          align-items: center;
+        }
+        .pricing-section__icon-label .accordion-label__btn :global(.closed) {
+          transform: rotate(0deg);
+        }
+        .pricing-section__icon-label.active .accordion-label__btn :global(.closed) {
+          transform: rotate(90deg);
+          opacity: 0;
         }
         .pricing-section__icon-label h5 {
           margin: 0 0 0 15px;
           font-weight: 300;
           letter-spacing: 0.02em;
-          /* color: ${colors.white}; */
         }
         .pricing-section__icon-label img {
           height: 100%;
           background: white;
           border-radius: 50%;
-          /* box-shadow: ${shadows.day}; */
         }
         .pricing-section__pricing {
           max-height: 0;
           transition: 1000ms ease max-height;
+          background: ${colors.dayLight}15;
         }
         .pricing-section__pricing-wrapper {
           padding: ${calculatorStyles.pricingSectionPadding};

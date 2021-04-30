@@ -159,6 +159,26 @@ export const globalStyles = css.global`
     code {
         font-size: 1.2em;
     }
+    button.regular {
+        min-height: 45px;
+        min-width: 45px;
+    }
+    .calculator-white-btn {
+        box-shadow: ${shadows.input};
+        border-radius: ${borderRadius};
+        background: ${colors.lightWhite};
+        color: ${colors.day};
+        border: none;
+        font-size: 0.8em;
+        font-weight: bold;
+        transition: .5s ease-out all;
+    }
+    .calculator-white-btn:hover,
+    .calculator-white-btn:active {
+        background: ${gradients.lightDay};
+        color: ${colors.white};
+        box-shadow: ${shadows.inputDarker};
+    }
     @media screen and (max-width: ${breakpoints.mediumDesktop}) {
         .containerSection {
             padding: 0 40px;

@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 // Components
 import PublicPricingCalculator from './PublicPricingCalculator'
 import PricingSummary from 'components/Shared/PricingCalculator/PricingSummary'
@@ -5,15 +6,16 @@ import PricingSummary from 'components/Shared/PricingCalculator/PricingSummary'
 import { ProvidePricingCalculator } from 'context/pricingCalculatorContext'
 
 const PricingCalculator = () => {
+  const calculatorRef = useRef(null)
 
   return (
     <>
       <ProvidePricingCalculator>
-        <section className="pricing-calculator" >
+        <section className="pricing-calculator" ref={calculatorRef} >
           <div className="pricing-calculator__pricing-items" >
             <PublicPricingCalculator />
           </div>
-          <PricingSummary />
+          <PricingSummary calculatorRef={calculatorRef} />
         </section>
       </ProvidePricingCalculator>
       <style jsx>{`

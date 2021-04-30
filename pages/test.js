@@ -7,6 +7,46 @@ const test = () => {
       <div>
         {/* <RangeSlider /> */}
         <PricingCalculator />
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
+        <div>asjlkasjdlasjdlaksjdlasjdlsajdlasjdlsajldasldaslkj</div>
       </div>
       <style jsx>{`
         div {

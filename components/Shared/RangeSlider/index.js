@@ -52,7 +52,6 @@ const RangeSlider = React.memo(({ theme, min, max, handleSlider, value, showRang
                     height: 100%;
                     text-align: center;
                     place-items: center;
-                    margin-top: 30px;
                 }
                 .rslider-container .range {
                     height: 80px;

@@ -10,8 +10,8 @@ const PricingItemWrapper = ({ label, description, children }) => {
         {children}
       </div>
       <style jsx>{`
-        .item__pricing-selection :global(.pricing-selection__pricing-objects .pricing-input.multiple:not(:last-child)) {
-          margin: ${calculatorStyles.multipleElementMargin};
+        .item__pricing-selection :global(.pricing-selection__pricing-objects .pricing-input.isMultiple:not(:last-child)) {
+          margin: ${calculatorStyles.isMultipleElementMargin};
         }
         p {
           margin: ${calculatorStyles.basicSubElementMargin};

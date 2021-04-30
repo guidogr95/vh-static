@@ -1,4 +1,4 @@
-import { useState, memo, useRef, useCallback } from 'react'
+import { useState, memo, useRef, useCallback, useEffect } from 'react'
 // Components
 import ItemPicker from 'components/Shared/PricingCalculator/ItemPicker'
 import ItemSelector from 'components/Shared/PricingCalculator/ItemSelector'
@@ -8,15 +8,15 @@ import Empty from 'components/Shared/Empty'
 // Assets
 import AddIcon from 'public/assets/media/icons/add.svg'
 
-const RatePricingItem = memo(({ label, pricingTable, multiple, placeholder, description, id }) => {
+const RatePricingItem = memo(({ label, pricingTable, isMultiple, placeholder, description, id, handleAccordion }) => {
 
   const [activeTableIndex, setActiveTableIndex] = useState(0)
-  const [pricingObjects, setPricingObjects] = useState(!multiple ? [pricingTable[0]] : [])
+  const [pricingObjects, setPricingObjects] = useState(!isMultiple ? [pricingTable[0]] : [])
   const selectRef = useRef(null)
 
   const handleClick = useCallback((value) => {
     if (typeof value === 'object') value && value.preventDefault()
-    if (!multiple) {
+    if (!isMultiple) {
       setActiveTableIndex(value)
       setPricingObjects([pricingTable[value]])
     } else {
@@ -32,9 +32,13 @@ const RatePricingItem = memo(({ label, pricingTable, multiple, placeholder, desc
     setPricingObjects(pricingObjects.filter(item => item.id !== id))
   }
 
+  useEffect(() => {
+    if (isMultiple) handleAccordion({ forceResize: true })
+  }, [pricingObjects])
+
   const optionsRenderer = () => {
     if (pricingTable.length <= 1) return null
-    if (!multiple) {
+    if (!isMultiple) {
       return (
         <ItemPicker
           pricingTable={pricingTable}
@@ -69,7 +73,7 @@ const RatePricingItem = memo(({ label, pricingTable, multiple, placeholder, desc
                 pricingData={pricingObject.pricingData}
                 id={pricingObject.id}
                 label={pricingObject.label}
-                multiple={multiple}
+                isMultiple={isMultiple}
                 deleteInput={deleteInput}
                 parentId={id}
               />

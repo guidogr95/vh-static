@@ -13,10 +13,13 @@ const PricingSummaryTotal = ({ pricingSummary }) => {
         const pricingItem = pricingSummary[i]
         switch (type) {
           case 'baseMultiplier':
-            if (pricingItem.monthlyPricing) childTotal += parseFloat(pricingItem.monthlyPricing)
+            for (const j in pricingItem.pricingItems) {
+              const monthlyPricing = pricingItem?.pricingItems[j]?.monthlyPricing
+              if (monthlyPricing) childTotal += parseFloat(monthlyPricing)
+            }
             break
           case 'ratePricing':
-            if (pricingItem.multiple && pricingItem.pricingItems) {
+            if (pricingItem.isMultiple && pricingItem.pricingItems) {
               for (const j in pricingItem.pricingItems) {
                 childTotal += parseFloat(pricingItem.pricingItems[j].monthlyPricing)
               }

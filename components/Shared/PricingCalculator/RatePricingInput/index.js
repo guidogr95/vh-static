@@ -4,13 +4,13 @@ import Input from 'components/Shared/Input'
 // Utils
 import calculateMonthlyPricing from 'utils/calculateMonthlyPricing'
 // Theme
-import { colors, borderRadius, gradients, shadows } from 'styles/theme'
+import { borderRadius } from 'styles/theme'
 // Assets
 import { FaMinus, FaPlus } from 'react-icons/fa'
 // Context
 import { usePricingCalculator } from 'context/pricingCalculatorContext'
 
-const RatePricingInput = ({ pricingData, multiple, label, deleteInput, id, parentId }) => {
+const RatePricingInput = ({ pricingData, isMultiple, label, deleteInput, id, parentId }) => {
   const { min } = pricingData
   const { pricingSummary, setPricingSummary } = usePricingCalculator()
   const [loaded, setLoaded] = useState(false)
@@ -35,7 +35,7 @@ const RatePricingInput = ({ pricingData, multiple, label, deleteInput, id, paren
         break
       case 'subtract': {
         const newValue = parseInt(inputValue) - 1
-        if (multiple && newValue === 0) {
+        if (isMultiple && newValue === 0) {
           const productIndex = pricingSummary.findIndex(product => product.id === parentId)
           const pricingSummaryCopy = Array.from(pricingSummary)
           pricingSummaryCopy[productIndex].pricingItems = pricingSummaryCopy[productIndex].pricingItems.filter(subproduct => subproduct.id !== id)
@@ -68,7 +68,7 @@ const RatePricingInput = ({ pricingData, multiple, label, deleteInput, id, paren
     if (productIndex < 0) return
     const pricingSummaryCopy = Array.from(pricingSummary)
 
-    if (multiple) {
+    if (isMultiple) {
       pricingSummaryCopy[productIndex]?.pricingItems
       ? pricingSummaryCopy[productIndex].pricingItems = [
         ...pricingSummaryCopy[productIndex]?.pricingItems,
@@ -103,7 +103,7 @@ const RatePricingInput = ({ pricingData, multiple, label, deleteInput, id, paren
     if (productIndex < 0) return
     const pricingSummaryCopy = Array.from(pricingSummary)
 
-    if (multiple) {
+    if (isMultiple) {
       const subproductIndex = pricingSummaryCopy[productIndex].pricingItems.findIndex(subproduct => subproduct.id === id)
       pricingSummaryCopy[productIndex].pricingItems[subproductIndex].monthlyPricing = monthlyPricing
     } else {
@@ -117,19 +117,21 @@ const RatePricingInput = ({ pricingData, multiple, label, deleteInput, id, paren
 
   return (
     <>
-      <div className={`pricing-input${multiple ? ' multiple' : ''}`} >
+      <div className={`pricing-input${isMultiple ? ' isMultiple' : ''}`} >
         <div className="pricing-input__input" >
           <button
-            className="input-btn add"
+            className="input-btn calculator-white-btn add"
             name="add"
             onClick={() => handleInputBtn('add')}
+            title="Add"
           >
             <FaPlus/>
           </button>
           <button
-            className="input-btn subtract"
+            className="input-btn calculator-white-btn subtract"
             name="subtract"
             onClick={() => handleInputBtn('subtract')}
+            title="Subtract"
           >
             <FaMinus />
           </button>
@@ -142,7 +144,7 @@ const RatePricingInput = ({ pricingData, multiple, label, deleteInput, id, paren
           />
         </div>
         <span className="pricing-input__units" >
-          {`${multiple ? label : ''} ${pricingData?.unit}`}
+          {`${isMultiple ? label : ''} ${pricingData?.unit}`}
         </span>
         <span className="monthly-pricing" >
           {pricingData.usdRate === 0 ? 'FREE' : `$${monthlyPricing}/mo`}
@@ -153,25 +155,27 @@ const RatePricingInput = ({ pricingData, multiple, label, deleteInput, id, paren
           display: flex;
           align-items: center;
         }
-        .pricing-input.multiple {
+        .pricing-input.isMultiple {
           display: grid;
-          grid-template-columns: 105px auto 95px;
+          grid-template-columns: 150px auto 95px;
+        }
+        .pricing-input :global(.form-control) {
+          box-shadow: none;
         }
         .pricing-input :global(input) {
           text-align: center;
           width: 100%;
-          max-width: 105px;
-          padding: 0 25px;
+          padding: 0 47px;
+          background: none;
         }
         .pricing-input__input {
+          width: 150px;
           position: relative;
           border-radius: ${borderRadius};
-          overflow: hidden;
-          box-shadow: ${shadows.input};
         }
         .pricing-input__input .input-btn {
           position: absolute;
-          width: 25px;
+          width: 45px;
           font-weight: bold;
           height: 100%;
           top: 0;
@@ -180,8 +184,6 @@ const RatePricingInput = ({ pricingData, multiple, label, deleteInput, id, paren
           align-items: center;
           justify-content: center;
           border: none;
-          background: ${gradients.lightDay};
-          color: ${colors.white};
         }
         .pricing-input__input .input-btn.add {
           right: 0;
@@ -205,7 +207,7 @@ const RatePricingInput = ({ pricingData, multiple, label, deleteInput, id, paren
           top: 0;
           right: 0;
         }
-        .pricing-input.multiple .monthly-pricing {
+        .pricing-input.isMultiple .monthly-pricing {
           position: relative;
           text-align: right;
         }

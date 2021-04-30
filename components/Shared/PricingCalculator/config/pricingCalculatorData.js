@@ -22,6 +22,7 @@ export const publicPricing = {
         label: 'Standard V3',
         id: '8816ecb0',
         addToSummary: true,
+        isMultiple: true,
         type: 'baseMultiplier',
         pricingTable: [
           {
@@ -100,6 +101,7 @@ export const publicPricing = {
         label: 'Standard V2',
         id: '9445ccea',
         addToSummary: true,
+        isMultiple: true,
         type: 'baseMultiplier',
         pricingTable: [
           {
@@ -404,7 +406,7 @@ export const publicPricing = {
         type: 'ratePricing',
         id: 'be93d686',
         description: 'We have worked with our partners to offer leased software licenses for our cloud computing platform. These licenses are available for use exclusively on our cloud computing platform and don’t work for external use.',
-        multiple: true,
+        isMultiple: true,
         placeholderLabel: 'Software License',
         pricingTable: [
           {
@@ -447,7 +449,7 @@ export const publicPricing = {
         label: 'Network Usage',
         id: '4f415c12',
         type: 'ratePricing',
-        multiple: true,
+        isMultiple: true,
         placeholderLabel: 'Cloud Network',
         pricingTable: [
           {

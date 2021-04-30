@@ -7,7 +7,7 @@ import { calculatorStyles, colors, gradients, shadows } from 'styles/theme'
 // Assets
 import { FaPlus } from 'react-icons/fa'
 
-const ItemSelector = forwardRef(({ pricingTable, onSubmit, placeholder, id }, ref) => {
+const ItemSelector = forwardRef(({ pricingTable, onSubmit, placeholder }, ref) => {
   const [selectValue, setSelectValue] = useState('none')
 
   const handleSelect = (e) => {
@@ -47,7 +47,7 @@ const ItemSelector = forwardRef(({ pricingTable, onSubmit, placeholder, id }, re
       <style jsx>{`
         .item-selector {
           display: grid;
-          grid-template-columns: 8.5fr 1.5fr;
+          grid-template-columns: auto 45px;
           gap: 20px;
           margin: ${calculatorStyles.basicSubElementMargin};
         }

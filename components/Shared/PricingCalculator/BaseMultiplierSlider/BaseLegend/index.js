@@ -4,7 +4,7 @@ import calculateMonthlyPricing from 'utils/calculateMonthlyPricing'
 // Context
 import { usePricingCalculator } from 'context/pricingCalculatorContext'
 
-const BaseLegend = ({ legendData, sliderValue, indexValues, pricingData, id }) => {
+const BaseLegend = ({ legendData, sliderValue, indexValues, pricingData, parentId, id }) => {
   const { pricingSummary, setPricingSummary } = usePricingCalculator()
 
   const multiplier = indexValues ? indexValues[sliderValue] : sliderValue
@@ -18,26 +18,40 @@ const BaseLegend = ({ legendData, sliderValue, indexValues, pricingData, id }) =
 
   useEffect(() => {
     if (loaded) return
-    const productIndex = pricingSummary.findIndex(product => product.id === id)
-    if (productIndex < 0) return
+    const parentProductIndex = pricingSummary.findIndex(product => product.id === parentId)
+    if (parentProductIndex < 0) return
     const pricingSummaryCopy = Array.from(pricingSummary)
-    if (pricingSummaryCopy[productIndex]?.monthlyPricing === undefined) {
-      const shouldAdd = productIndex === 0 ? true : pricingSummaryCopy[parseInt(productIndex) - 1]?.monthlyPricing !== undefined
-      if (shouldAdd) {
-        pricingSummaryCopy[productIndex].monthlyPricing = monthlyPricing
-        pricingSummaryCopy[productIndex].multiplier = multiplier
-      }
-    }
+
+    pricingSummaryCopy[parentProductIndex]?.pricingItems
+      ? pricingSummaryCopy[parentProductIndex].pricingItems = [
+        ...pricingSummaryCopy[parentProductIndex]?.pricingItems,
+        {
+          id,
+          monthlyPricing,
+          multiplier
+        }
+      ]
+      : pricingSummaryCopy[parentProductIndex].pricingItems = [
+        {
+          id,
+          monthlyPricing,
+          multiplier
+        }
+      ]
+
     setPricingSummary(pricingSummaryCopy)
     setLoaded(true)
   }, [pricingSummary])
 
   useEffect(() => {
-    const productIndex = pricingSummary.findIndex(product => product.id === id)
-    if (productIndex < 0) return
+    const parentProductIndex = pricingSummary.findIndex(product => product.id === parentId)
+    if (parentProductIndex < 0) return
     const pricingSummaryCopy = Array.from(pricingSummary)
-    pricingSummaryCopy[productIndex].monthlyPricing = monthlyPricing
-    pricingSummaryCopy[productIndex].multiplier = multiplier
+
+    const subProductIndex = pricingSummaryCopy[parentProductIndex].pricingItems.findIndex(subproduct => subproduct.id === id)
+    pricingSummaryCopy[parentProductIndex].pricingItems[subProductIndex].monthlyPricing = monthlyPricing
+    pricingSummaryCopy[parentProductIndex].pricingItems[subProductIndex].multiplier = multiplier
+
     setPricingSummary(pricingSummaryCopy)
   }, [monthlyPricing])
 

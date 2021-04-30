@@ -5,7 +5,7 @@ import BaseLegend from './BaseLegend'
 // Theme
 import { gradients } from 'styles/theme'
 
-const BaseMultiplierSlider = ({ max, min, legendData, pricingData, id }) => {
+const BaseMultiplierSlider = ({ max, min, legendData, pricingData, parentId, id }) => {
 
   const [value, setValue] = useState(min || 1)
 
@@ -23,23 +23,31 @@ const BaseMultiplierSlider = ({ max, min, legendData, pricingData, id }) => {
   }
 
   return (
-    <div className="base-multiplier" >
-      <RangeSlider
-        value={value}
-        handleSlider={handleSlider}
-        max={max}
-        min={min}
-        indexValues={indexValues}
-        theme={sliderTheme}
-      />
-      <BaseLegend
-        legendData={legendData}
-        sliderValue={value}
-        indexValues={indexValues}
-        pricingData={pricingData}
-        id={id}
-      />
-    </div>
+    <>
+      <div className="base-multiplier" >
+        <RangeSlider
+          value={value}
+          handleSlider={handleSlider}
+          max={max}
+          min={min}
+          indexValues={indexValues}
+          theme={sliderTheme}
+        />
+        <BaseLegend
+          legendData={legendData}
+          sliderValue={value}
+          indexValues={indexValues}
+          pricingData={pricingData}
+          parentId={parentId}
+          id={id}
+        />
+      </div>
+      <style jsx>{`
+        .base-multiplier {
+          padding-top: 30px;
+        }
+      `}</style>
+    </>
   )
 }
 

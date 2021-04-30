@@ -41,6 +41,8 @@ export const gradients = {
 
 export const shadows = {
   input: '0px 4px 4px rgba(0, 0, 0, 0.12)',
+  inputDarker: '0px 12px 20px rgba(0, 0, 0, 0.16)',
+  inputDarkerPressed: '0px 12px 30px rgba(0, 0, 0, 0.3)',
   day: '20px 20px 60px #562ed9, -20px -20px 60px #743eff',
   white: '14px 14px 28px #f2f2f2, -14px -14px 28px #ffffff'
 }
@@ -51,8 +53,9 @@ export const desktopMaxWidth = '1100px'
 export const newDesktopMaxWidth = '1216px'
 
 export const calculatorStyles = {
+  largeSubElementMargin: '0 0 45px 0',
   basicSubElementMargin: '0 0 30px 0',
-  multipleElementMargin: '0 0 25px 0',
+  isMultipleElementMargin: '0 0 25px 0',
   pricingItemMargin: '70px 0 0 0',
   pricingSectionMargin: '0 0 80px 0',
   pricingSectionPadding: '30px 40px',

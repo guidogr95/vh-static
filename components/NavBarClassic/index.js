@@ -6,6 +6,8 @@ import NavMenu from './NavMenu'
 import Logo from 'public/assets/media/brand/std-horizontal-color.svg'
 import LogoIcon from 'public/assets/media/brand/std-color.svg'
 import { FaUserPlus, FaInfoCircle, FaSignInAlt, FaBars } from 'react-icons/fa'
+// Utils
+import { throttle } from 'utils/imports'
 // Theme
 import { colors, fonts } from 'styles/theme'
 
@@ -36,9 +38,10 @@ const NavBar = ({ navButtons }) => {
     }
 
     useEffect(() => {
-        window.addEventListener('scroll', scrollHandler)
+        const throttledScrollHandler = throttle(scrollHandler, 1000)
+        window.addEventListener('scroll', throttledScrollHandler)
         return () => {
-            window.removeEventListener('scroll', scrollHandler)
+            window.removeEventListener('scroll', throttledScrollHandler)
         }
     }, [])
 
