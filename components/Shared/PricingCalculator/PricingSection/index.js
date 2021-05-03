@@ -121,11 +121,16 @@ const PricingSection = ({ icon, label, sectionPricingData }) => {
           height: 100%;
           align-items: center;
         }
-        .pricing-section__icon-label .accordion-label__btn :global(.closed) {
+        .pricing-section__icon-label .accordion-label__btn :global(.opened) {
+          transform: rotate(-90deg);
+          opacity: 0;
+        }
+        .pricing-section__icon-label.active .accordion-label__btn :global(.opened) {
           transform: rotate(0deg);
+          opacity: 1;
         }
         .pricing-section__icon-label.active .accordion-label__btn :global(.closed) {
-          transform: rotate(90deg);
+          transform: rotate(90deg) scale(0.5);
           opacity: 0;
         }
         .pricing-section__icon-label h5 {

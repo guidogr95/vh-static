@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 // Utils
-import calculateMonthlyPricing from 'utils/calculateMonthlyPricing'
+import calculatePricing from 'utils/calculatePricing'
 // Context
 import { usePricingCalculator } from 'context/pricingCalculatorContext'
 
@@ -10,10 +10,18 @@ const BaseLegend = ({ legendData, sliderValue, indexValues, pricingData, parentI
   const multiplier = indexValues ? indexValues[sliderValue] : sliderValue
   const [loaded, setLoaded] = useState(false)
 
-  const monthlyPricing = calculateMonthlyPricing({
+  const monthlyPricing = calculatePricing({
     pricingData,
     multiplier,
-    type: 'baseMultiplier'
+    type: 'baseMultiplier',
+    outRateTime: 'monthly'
+  })
+
+  const hourlyPricing = calculatePricing({
+    pricingData,
+    multiplier,
+    type: 'baseMultiplier',
+    outRateTime: 'hourly'
   })
 
   useEffect(() => {

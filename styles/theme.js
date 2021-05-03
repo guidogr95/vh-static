@@ -19,6 +19,8 @@ export const fonts = {
 }
 
 export const colors = {
+    blackOne: '#272727',
+    blackTwo: '#3e3e3e',
     day: '#6536ff',
     dayLight: '#C8B9F8',
     night: '#2a1659',
@@ -32,7 +34,10 @@ export const colors = {
     lightWhite: '#fcfcfc',
     copyrightTextColor: '#adb1b5',
     trueWhite: '#fff',
-    stickyNavColor: '#52606a'
+    stickyNavColor: '#52606a',
+    purple: '#584DCB',
+    lightPurple: '#6357CE',
+    lighterPurple: '#A994F2'
 }
 
 export const gradients = {
@@ -48,6 +53,8 @@ export const shadows = {
 }
 
 export const borderRadius = '6px'
+export const largeBorderRadius = '34px'
+export const mediumBorderRadius = '20px'
 
 export const desktopMaxWidth = '1100px'
 export const newDesktopMaxWidth = '1216px'

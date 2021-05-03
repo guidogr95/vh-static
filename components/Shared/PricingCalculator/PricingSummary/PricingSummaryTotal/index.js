@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 // Components
 import PricingSummaryBlock from 'components/Shared/PricingCalculator/PricingSummary/PricingSummaryBlock'
+// Utils
+import numberFormat from 'utils/numberFormat'
 
 const PricingSummaryTotal = ({ pricingSummary }) => {
-  const [total, setTotal] = useState(0)
+  const [total, setTotal] = useState('$0.00')
 
   useEffect(() => {
     let childTotal = 0
@@ -31,19 +33,30 @@ const PricingSummaryTotal = ({ pricingSummary }) => {
         }
       }
     }
-    setTotal(childTotal)
+    const formattedTotal = numberFormat({
+      value: childTotal,
+      style: 'currency'
+    })
+    setTotal(formattedTotal)
   }, [pricingSummary])
 
   return (
-    <PricingSummaryBlock>
-      <span className="block__label sm" >Total Estimate</span>
-      <h2 className="block__total" >
-        ${total.toFixed(2)}
-      </h2>
-      <span className="block__label md" >
-        Monthly
-      </span>
-    </PricingSummaryBlock>
+    <>
+      <PricingSummaryBlock>
+        <span className="block__label sm" >Total Estimate</span>
+        <h2 className="block__total" >
+          {total}
+        </h2>
+        <span className="block__label md" >
+          Monthly
+        </span>
+      </PricingSummaryBlock>
+      <style jsx>{`
+        :global(.block__total) {
+          transform: scale(${total.length > 10 ? 1 - (1 * (total.length * 2 / 100)) : 1});
+        }
+      `}</style>
+    </>
   )
 }
 

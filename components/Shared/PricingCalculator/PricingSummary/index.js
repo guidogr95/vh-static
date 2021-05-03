@@ -87,6 +87,9 @@ const PricingSummary = ({ calculatorRef }) => {
           color: ${colors.whiteGray};
           transition: .5s ease-out all;
         }
+        .pricing-calculator__pricing-summary :global(.pricing-summary__block:last-of-type) {
+          margin-bottom: 0px;
+        }
       `}</style>
     </>
   )

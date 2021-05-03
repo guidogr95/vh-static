@@ -31,39 +31,48 @@ export const publicPricing = {
             pricingData: [
               {
                 baseMultiplier: 0,
-                usdHourlyRate: 0
+                usdRate: 0,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 1,
-                usdHourlyRate: 0.055
+                usdRate: 0.055,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 2,
-                usdHourlyRate: 0.110
+                usdRate: 0.110,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 4,
-                usdHourlyRate: 0.219
+                usdRate: 0.219,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 8,
-                usdHourlyRate: 0.438
+                usdRate: 0.438,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 16,
-                usdHourlyRate: 0.876
+                usdRate: 0.876,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 24,
-                usdHourlyRate: 1.752
+                usdRate: 1.752,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 32,
-                usdHourlyRate: 3.504
+                usdRate: 3.504,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 48,
-                usdHourlyRate: 7.008
+                usdRate: 7.008,
+                usdRateTime: 'hourly'
               }
             ]
           }
@@ -110,27 +119,33 @@ export const publicPricing = {
             pricingData: [
               {
                 baseMultiplier: 0,
-                usdHourlyRate: 0
+                usdRate: 0,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 1,
-                usdHourlyRate: 0.045
+                usdRate: 0.045,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 2,
-                usdHourlyRate: 0.09
+                usdRate: 0.09,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 4,
-                usdHourlyRate: 0.18
+                usdRate: 0.18,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 8,
-                usdHourlyRate: 0.36
+                usdRate: 0.36,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 16,
-                usdHourlyRate: 0.72
+                usdRate: 0.72,
+                usdRateTime: 'hourly'
               }
             ]
           },
@@ -140,27 +155,33 @@ export const publicPricing = {
             pricingData: [
               {
                 baseMultiplier: 0,
-                usdHourlyRate: 0
+                usdRate: 0,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 1,
-                usdHourlyRate: 0.03825
+                usdRate: 0.03825,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 2,
-                usdHourlyRate: 0.0765
+                usdRate: 0.0765,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 4,
-                usdHourlyRate: 0.153
+                usdRate: 0.153,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 8,
-                usdHourlyRate: 0.306
+                usdRate: 0.306,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 16,
-                usdHourlyRate: 0.612
+                usdRate: 0.612,
+                usdRateTime: 'hourly'
               }
             ]
           }
@@ -198,35 +219,43 @@ export const publicPricing = {
             pricingData: [
               {
                 baseMultiplier: 0,
-                usdHourlyRate: 0
+                usdRate: 0,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 1,
-                usdHourlyRate: 0.035
+                usdRate: 0.035,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 2,
-                usdHourlyRate: 0.07
+                usdRate: 0.07,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 4,
-                usdHourlyRate: 0.14
+                usdRate: 0.14,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 8,
-                usdHourlyRate: 0.28
+                usdRate: 0.28,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 16,
-                usdHourlyRate: 0.56
+                usdRate: 0.56,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 32,
-                usdHourlyRate: 1.12
+                usdRate: 1.12,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 64,
-                usdHourlyRate: 2.24
+                usdRate: 2.24,
+                usdRateTime: 'hourly'
               }
             ]
           },
@@ -236,35 +265,43 @@ export const publicPricing = {
             pricingData: [
               {
                 baseMultiplier: 0,
-                usdHourlyRate: 0
+                usdRate: 0,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 1,
-                usdHourlyRate: 0.02975
+                usdRate: 0.02975,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 2,
-                usdHourlyRate: 0.0595
+                usdRate: 0.0595,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 4,
-                usdHourlyRate: 0.119
+                usdRate: 0.119,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 8,
-                usdHourlyRate: 0.238
+                usdRate: 0.238,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 16,
-                usdHourlyRate: 0.476
+                usdRate: 0.476,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 32,
-                usdHourlyRate: 0.952
+                usdRate: 0.952,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 64,
-                usdHourlyRate: 1.904
+                usdRate: 1.904,
+                usdRateTime: 'hourly'
               }
             ]
           }
@@ -302,23 +339,28 @@ export const publicPricing = {
             pricingData: [
               {
                 baseMultiplier: 0,
-                usdHourlyRate: 0
+                usdRate: 0,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 1,
-                usdHourlyRate: 0.80
+                usdRate: 0.80,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 2,
-                usdHourlyRate: 1.60
+                usdRate: 1.60,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 4,
-                usdHourlyRate: 3.20
+                usdRate: 3.20,
+                usdRateTime: 'hourly'
               },
               {
                 baseMultiplier: 8,
-                usdHourlyRate: 6.40
+                usdRate: 6.40,
+                usdRateTime: 'hourly'
               }
             ]
           }
@@ -372,6 +414,7 @@ export const publicPricing = {
             pricingData: {
               unit: 'GB',
               usdRate: 0.10,
+              usdRateTime: 'monthly',
               min: 1
             }
           },
@@ -396,7 +439,8 @@ export const publicPricing = {
             id: '29ccf9fa',
             pricingData: {
               unit: 'IP Address',
-              usdRate: 2.0832
+              usdRate: 2.0832,
+              usdRateTime: 'monthly'
             }
           }
         ]
@@ -415,6 +459,7 @@ export const publicPricing = {
             pricingData: {
               unit: 'Licenses',
               usdRate: 22.32,
+              usdRateTime: 'monthly',
               min: 1
             }
           },
@@ -424,6 +469,7 @@ export const publicPricing = {
             pricingData: {
               unit: 'Licenses',
               usdRate: 22.32,
+              usdRateTime: 'monthly',
               min: 1
             }
           },
@@ -433,6 +479,7 @@ export const publicPricing = {
             pricingData: {
               unit: 'Licenses',
               usdRate: 14.88,
+              usdRateTime: 'monthly',
               min: 1
             }
           }
@@ -458,6 +505,7 @@ export const publicPricing = {
             pricingData: {
               unit: '',
               usdRate: 1.0416,
+              usdRateTime: 'monthly',
               min: 1
             }
           },
@@ -467,6 +515,7 @@ export const publicPricing = {
             pricingData: {
               unit: '',
               usdRate: 1.0416,
+              usdRateTime: 'monthly',
               min: 1
             }
           },
@@ -476,6 +525,7 @@ export const publicPricing = {
             pricingData: {
               unit: '',
               usdRate: 2.0832,
+              usdRateTime: 'monthly',
               min: 1
             }
           }
@@ -502,19 +552,23 @@ export const publicPricing = {
             pricingData: {
               unit: 'GB',
               usdRate: 1.0416,
+              usdRateTime: 'monthly',
               min: 1,
               conditions: [
                 {
                   maxValue: 1000,
-                  usdRate: 0.10416
+                  usdRate: 0.10416,
+                  usdRateTime: 'monthly'
                 },
                 {
                   maxValue: 50000,
-                  usdRate: 0.09672
+                  usdRate: 0.09672,
+                  usdRateTime: 'monthly'
                 },
                 {
                   maxValue: 100000,
-                  usdRate: 0.08184
+                  usdRate: 0.08184,
+                  usdRateTime: 'monthly'
                 }
               ]
             }
@@ -532,6 +586,7 @@ export const publicPricing = {
             pricingData: {
               unit: 'GB',
               usdRate: 0.10416,
+              usdRateTime: 'monthly',
               min: 1
             }
           }
@@ -558,6 +613,7 @@ export const publicPricing = {
             pricingData: {
               unit: 'GB',
               usdRate: 0.01488,
+              usdRateTime: 'monthly',
               min: 1
             }
           },
@@ -568,6 +624,7 @@ export const publicPricing = {
             pricingData: {
               unit: 'GB',
               usdRate: 0.15624,
+              usdRateTime: 'monthly',
               min: 1
             }
           }
@@ -587,6 +644,7 @@ export const publicPricing = {
             pricingData: {
               unit: 'GB',
               usdRate: 0.01488,
+              usdRateTime: 'monthly',
               min: 1
             }
           },
@@ -597,6 +655,7 @@ export const publicPricing = {
             pricingData: {
               unit: 'GB',
               usdRate: 0.15624,
+              usdRateTime: 'monthly',
               min: 1
             }
           }
@@ -621,6 +680,7 @@ export const publicPricing = {
             pricingData: {
               unit: 'GB',
               usdRate: 0.1192,
+              usdRateTime: 'monthly',
               min: 1
             }
           }
@@ -648,6 +708,7 @@ export const publicPricing = {
             pricingData: {
               unit: 'GB',
               usdRate: 0.10416,
+              usdRateTime: 'monthly',
               min: 1
             }
           }
@@ -672,19 +733,23 @@ export const publicPricing = {
             pricingData: {
               unit: 'GB',
               usdRate: 0.10416,
+              usdRateTime: 'monthly',
               min: 1,
               conditions: [
                 {
                   maxValue: 1000,
-                  usdRate: 0.10416
+                  usdRate: 0.10416,
+                  usdRateTime: 'monthly'
                 },
                 {
                   maxValue: 50000,
-                  usdRate: 0.09672
+                  usdRate: 0.09672,
+                  usdRateTime: 'monthly'
                 },
                 {
                   maxValue: 100000,
-                  usdRate: 0.08184
+                  usdRate: 0.08184,
+                  usdRateTime: 'monthly'
                 }
               ]
             }
@@ -703,6 +768,7 @@ export const publicPricing = {
             pricingData: {
               unit: 'Highly Available Load Balancer + SSL',
               usdRate: 22.32,
+              usdRateTime: 'monthly',
               min: 1
             }
           }

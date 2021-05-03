@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 // Components
 import Input from 'components/Shared/Input'
 // Utils
-import calculateMonthlyPricing from 'utils/calculateMonthlyPricing'
+import calculatePricing from 'utils/calculatePricing'
 // Theme
 import { borderRadius } from 'styles/theme'
 // Assets
@@ -51,11 +51,12 @@ const RatePricingInput = ({ pricingData, isMultiple, label, deleteInput, id, par
     }
   }
 
-  const monthlyPricing = calculateMonthlyPricing({
+  const monthlyPricing = calculatePricing({
     pricingData,
     multiplier,
     type: 'rate',
-    conditions: pricingData?.conditions
+    conditions: pricingData?.conditions,
+    cycle: 'monthly'
   })
 
   useEffect(() => {
