@@ -56,7 +56,14 @@ const RatePricingInput = ({ pricingData, isMultiple, label, deleteInput, id, par
     multiplier,
     type: 'rate',
     conditions: pricingData?.conditions,
-    cycle: 'monthly'
+    outRateTime: 'monthly'
+  })
+  const hourlyPricing = calculatePricing({
+    pricingData,
+    multiplier,
+    type: 'rate',
+    conditions: pricingData?.conditions,
+    outRateTime: 'hourly'
   })
 
   useEffect(() => {
@@ -148,7 +155,7 @@ const RatePricingInput = ({ pricingData, isMultiple, label, deleteInput, id, par
           {`${isMultiple ? label : ''} ${pricingData?.unit}`}
         </span>
         <span className="monthly-pricing" >
-          {pricingData.usdRate === 0 ? 'FREE' : `$${monthlyPricing}/mo`}
+          {pricingData.usdRate === 0 ? 'FREE' : `$${hourlyPricing}/hr ≈ $${monthlyPricing}/mo`}
         </span>
       </div>
       <style jsx>{`

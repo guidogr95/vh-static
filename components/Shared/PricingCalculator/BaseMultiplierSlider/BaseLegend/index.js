@@ -16,7 +16,6 @@ const BaseLegend = ({ legendData, sliderValue, indexValues, pricingData, parentI
     type: 'baseMultiplier',
     outRateTime: 'monthly'
   })
-
   const hourlyPricing = calculatePricing({
     pricingData,
     multiplier,
@@ -66,7 +65,7 @@ const BaseLegend = ({ legendData, sliderValue, indexValues, pricingData, parentI
   return (
     <>
       <div className="base-multiplier__base-legend" >
-        <span className="monthly-pricing" >${monthlyPricing}/mo</span>
+        <span className="monthly-pricing" >${hourlyPricing}/hr ≈ ${monthlyPricing}/mo</span>
         <div className="base-legend__multiplier" >
           <span>{multiplier}</span>
           <span className="multiplier-symbol" >X</span>

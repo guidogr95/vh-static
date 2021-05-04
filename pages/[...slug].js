@@ -56,7 +56,6 @@ export async function getStaticProps ({ params }) {
   const FooterData = footerRes.data
 
   const blogLimit = await axios.get(`${apiUrl}/blogs/count`, { headers: { Authorization: `Bearer ${apiToken}` } })
-
   const blogPosts = await axios.post(`${apiUrl}/graphql`, {
     query: `{
       blogs(limit: ${blogLimit.data}) {
@@ -84,9 +83,10 @@ export async function getStaticProps ({ params }) {
   )
   const Blogs = blogPosts.data.data.blogs.filter(blog => blog !== null).sort((a, b) => new Date(strapiDateToDateString(b.Publication)) - new Date(strapiDateToDateString(a.Publication)))
 
+  const tutorialsLimit = await axios.get(`${apiUrl}/tutorials/count`, { headers: { Authorization: `Bearer ${apiToken}` } })
   const tutorialPosts = await axios.post(`${apiUrl}/graphql`, {
     query: `{
-      tutorials {
+      tutorials(limit: ${tutorialsLimit.data}) {
         Title,
         Content,
         Slug,

@@ -90,39 +90,43 @@ export async function getStaticProps ({ params }) {
   // const footerRes = await axios.get(`${apiUrl}/footer`, { headers: { Authorization: `Bearer ${apiToken}` } })
   // const FooterData = footerRes.data
 
-  // const blogLimit = await axios.get(`${apiUrl}/blogs/count`, { headers: { Authorization: `Bearer ${apiToken}` } })
+  const blogLimit = await axios.get(`${apiUrl}/blogs/count`, { headers: { Authorization: `Bearer ${apiToken}` } })
+  const blogPosts = await axios.post(`${apiUrl}/graphql`, {
+    query: `{
+      blogs(limit: ${blogLimit.data}) {
+        Title,
+        Content,
+        Slug,
+        Publication,
+        published_at,
+        Featured,
+        Publisher {
+          fullname,
+          description,
+          ProfilePicture {
+            url
+          }
+        },
+        Thumbnail {
+          formats
+        },
+        ThumbnailBgColorHex,
+        TitleColor
+      }
+    }`
+  },
+  { headers: { Authorization: `Bearer ${apiToken}` } }
+  )
+  const blogs = blogPosts.data.data.blogs.filter(blog => blog !== null).sort((a, b) => new Date(strapiDateToDateString(b.Publication)) - new Date(strapiDateToDateString(a.Publication)))
+  blogs.forEach(blog => {
+    const domContent = new JSDOM(`<div class="domContent" >${blog.Content}</div>`)
+    blog.TextContent = `${domContent.window.document.querySelector('.domContent').textContent}`
+  })
 
-  // const blogPosts = await axios.post(`${apiUrl}/graphql`, {
-  //   query: `{
-  //     blogs(limit: ${blogLimit.data}) {
-  //       Title,
-  //       Content,
-  //       Slug,
-  //       Publication,
-  //       published_at,
-  //       Featured,
-  //       Publisher {
-  //         fullname,
-  //         description,
-  //         ProfilePicture {
-  //           url
-  //         }
-  //       },
-  //       Thumbnail {
-  //         formats
-  //       },
-  //       ThumbnailBgColorHex,
-  //       TitleColor
-  //     }
-  //   }`
-  //   },
-  //   { headers: { Authorization: `Bearer ${apiToken}` } }
-  // )
-  // const Blogs = blogPosts.data.data.blogs.filter(blog => blog !== null).sort((a, b) => new Date(strapiDateToDateString(b.Publication)) - new Date(strapiDateToDateString(a.Publication)))
-
+  const tutorialsLimit = await axios.get(`${apiUrl}/tutorials/count`, { headers: { Authorization: `Bearer ${apiToken}` } })
   const tutorialPosts = await axios.post(`${apiUrl}/graphql`, {
     query: `{
-      tutorials {
+      tutorials(limit: ${tutorialsLimit.data}) {
         Title,
         Content,
         Slug,
@@ -155,7 +159,8 @@ export async function getStaticProps ({ params }) {
     props: {
       // Blogs,
       content: {
-        ...tutorials
+        ...tutorials,
+        ...blogs
       }
     }
   }

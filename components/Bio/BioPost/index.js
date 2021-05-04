@@ -3,7 +3,6 @@ import { colors, mediumBorderRadius } from 'styles/theme'
 
 const BioPost = ({ date, title, description, thumbnail }) => {
   const descriptionMaxLength = 163
-  console.log(thumbnail)
   return (
     <>
       <article>
