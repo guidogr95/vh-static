@@ -12,13 +12,15 @@ import { borderRadius, calculatorStyles, colors, gradients } from 'styles/theme'
 import { throttle } from 'utils/imports'
 import stickElementBetweenDivs from 'utils/stickElementBetweenDivs'
 // Context
+import { useSpringUtils } from 'context/springContext'
 import { usePricingCalculator } from 'context/pricingCalculatorContext'
 
 const PricingSummary = ({ calculatorRef }) => {
-
   const { pricingSummary, summaryProducts } = usePricingCalculator()
+  const { useSpring, animated } = useSpringUtils()
   const summaryRef = useRef(null)
   const floorRef = useRef(null)
+  const [styles, set] = useSpring(() => ({ transform: 'translateY(0px)' }))
 
   const scrollHandler = ({ height }) => {
     if (!summaryRef?.current || !floorRef?.current || !calculatorRef?.current) return
@@ -26,11 +28,13 @@ const PricingSummary = ({ calculatorRef }) => {
       height,
       topEl: calculatorRef.current,
       bottomEl: floorRef.current,
-      targetEl: summaryRef.current
+      targetEl: summaryRef.current,
+      springApi: set
     })
   }
 
   useEffect(() => {
+    if (!set) return
     const throttledScrollHandler = throttle(scrollHandler, 800)
     const calculatorObserver = new ResizeObserver(entries => {
       entries.forEach(entry => {
@@ -43,11 +47,15 @@ const PricingSummary = ({ calculatorRef }) => {
       window.removeEventListener('scroll', throttledScrollHandler)
       calculatorObserver.unobserve(calculatorRef.current)
     }
-  }, [])
+  }, [set])
 
   return (
     <>
-      <aside className="pricing-calculator__pricing-summary" ref={summaryRef} >
+      <animated.aside
+        className="pricing-calculator__pricing-summary"
+        ref={summaryRef}
+        style={styles}
+      >
         <PricingSummaryTotal
           pricingSummary={pricingSummary}
         />
@@ -70,10 +78,10 @@ const PricingSummary = ({ calculatorRef }) => {
             />
           </>
         }
-      </aside>
+      </animated.aside>
       <div ref={floorRef} />
       <style jsx>{`
-        .pricing-calculator__pricing-summary {
+        :global(.pricing-calculator__pricing-summary) {
           width: 100%;
           background: ${gradients.lightDay};
           height: fit-content;
@@ -87,7 +95,7 @@ const PricingSummary = ({ calculatorRef }) => {
           color: ${colors.whiteGray};
           transition: .5s ease-out all;
         }
-        .pricing-calculator__pricing-summary :global(.pricing-summary__block:last-of-type) {
+        :global(.pricing-calculator__pricing-summary .pricing-summary__block:last-of-type) {
           margin-bottom: 0px;
         }
       `}</style>

@@ -4,22 +4,26 @@ const stickElementBetweenDivs = (options) => {
     height,
     topEl,
     bottomEl,
-    targetEl
+    targetEl,
+    springApi
   } = options
 
-  if (!topEl || !bottomEl || !targetEl) return
+  if (!topEl || !bottomEl || !targetEl || !springApi) return
 
   const { top: topElY } = topEl.getBoundingClientRect()
   const { top: bottomElY } = bottomEl.getBoundingClientRect()
   const calculatorHeight = height || topEl.scrollHeight
   if (topElY < 0) {
     if (bottomElY >= targetEl.scrollHeight) {
-      targetEl.style.transform = `translateY(${parseInt(topElY * -1) + 2}px)`
+      springApi({ transform: `translateY(${parseInt(topElY * -1) + 2}px)` })
+      // targetEl.style.transform = `translateY(${parseInt(topElY * -1) + 2}px)`
     } else if (bottomElY < targetEl.scrollHeight) {
-      targetEl.style.transform = `translateY(${calculatorHeight - targetEl.scrollHeight}px)`
+      springApi({ transform: `translateY(${calculatorHeight - targetEl.scrollHeight}px)` })
+      // targetEl.style.transform = `translateY(${calculatorHeight - targetEl.scrollHeight}px)`
     }
   } else if (topElY >= 0) {
-    targetEl.style.transform = 'translateY(0px)'
+    springApi({ transform: 'translateY(0px)' })
+    // targetEl.style.transform = 'translateY(0px)'
   }
 }
 

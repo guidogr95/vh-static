@@ -109,7 +109,7 @@ function useProvidePricingCalculator () {
     const newPricingSummary = extractPricingData({ pricingObject: publicPricing })
     setPricingSummary(newPricingSummary)
   }, [])
-
+  
   return {
     pricingSummary,
     setPricingSummary,
