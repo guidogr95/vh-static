@@ -10,6 +10,7 @@ import SEOHead from 'components/Shared/SEOHead'
 import Footer from 'components/Shared/Footer'
 // Context
 import { ProvideSpring } from 'context/springContext'
+import PageStyleOne from 'components/Shared/PageStyleOne'
 
 function MyApp ({ Component, pageProps }) {
   const { navButtons, PostSEO, FooterData, Slug, slugPrefix, Parent } = pageProps
@@ -23,8 +24,10 @@ function MyApp ({ Component, pageProps }) {
       <AppLayout>
         <ProvideSpring>
           { navButtons && <NavBarClassic navButtons={navButtons} /> }
-          <Component {...pageProps} />
-          { FooterData && <Footer footerData={FooterData} /> }
+          <PageStyleOne>
+            <Component {...pageProps} />
+            { FooterData && <Footer footerData={FooterData} /> }
+          </PageStyleOne>
         </ProvideSpring>
       </AppLayout>
     </>

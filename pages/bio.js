@@ -1,12 +1,10 @@
 // Utils
 import jsdom from 'jsdom'
 import { axios, dynamic } from 'utils/imports'
-import strapiDateToDateString from 'utils/strapiDateToDateString'
-import dateTransform from 'utils/dateTransform'
 // Contants
 import { apiUrl, apiToken } from 'config/constants'
 // Theme
-import { colors, newDesktopMaxWidth } from 'styles/theme'
+import { breakpoints, colors, newDesktopMaxWidth } from 'styles/theme'
 // Assets
 import WhiteLogo from 'public/assets/media/brand/std-horizontal-white.svg'
 // Components
@@ -20,7 +18,6 @@ const bio = (props) => {
   const {
     content
   } = props
-
   return (
     <>
       <div>
@@ -31,16 +28,15 @@ const bio = (props) => {
               <h1>Content</h1>
             </header>
             <main>
-              {Object.values(content).map((contentItem, index) => {
-                const transformType = 'month day, year'
-                const date = contentItem?.Publication ? dateTransform({ date: strapiDateToDateString(contentItem.Publication), transformType }) : dateTransform({ date: contentItem.published_at, transformType })
+              {content.map((contentItem, index) => {
+                const data = contentItem.Post
                 return (
                   <BioPost
                     key={index}
-                    title={contentItem.Title}
-                    date={date}
-                    description={contentItem.TextContent}
-                    thumbnail={contentItem?.Thumbnail?.formats?.small?.url}
+                    title={data.Title}
+                    description={data.TextContent}
+                    thumbnail={data?.Image}
+                    slug={data.Slug}
                   />
                 )
               })}
@@ -75,93 +71,37 @@ const bio = (props) => {
           position: relative;
           margin: auto;
         }
+        @media screen and (max-width: ${breakpoints.mediumDesktop}) {
+          div :global(main) {
+            padding: 0 40px;
+          }
+        }
+        @media screen and (max-width: ${breakpoints.smallDesktop}) {
+          div :global(main) {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        @media screen and (max-width: ${breakpoints.ipad}) {
+          div :global(main) {
+            grid-template-columns: repeat(1, 1fr);
+          }
+        }
       `}</style>
     </>
   )
 }
 
-export async function getStaticProps ({ params }) {
-  // const { slug } = params
-  // const Slug = slug[slug.length - 1]
-  // const pageData = await axios.get(`${apiUrl}/pages?Slug=${Slug}`, { headers: { Authorization: `Bearer ${apiToken}` } })
-  // const navRes = await axios.get(`${apiUrl}/main-menu`, { headers: { Authorization: `Bearer ${apiToken}` } })
-  // const navButtons = navRes.data.MenuItemMain
-
-  // const footerRes = await axios.get(`${apiUrl}/footer`, { headers: { Authorization: `Bearer ${apiToken}` } })
-  // const FooterData = footerRes.data
-
-  const blogLimit = await axios.get(`${apiUrl}/blogs/count`, { headers: { Authorization: `Bearer ${apiToken}` } })
-  const blogPosts = await axios.post(`${apiUrl}/graphql`, {
-    query: `{
-      blogs(limit: ${blogLimit.data}) {
-        Title,
-        Content,
-        Slug,
-        Publication,
-        published_at,
-        Featured,
-        Publisher {
-          fullname,
-          description,
-          ProfilePicture {
-            url
-          }
-        },
-        Thumbnail {
-          formats
-        },
-        ThumbnailBgColorHex,
-        TitleColor
-      }
-    }`
-  },
-  { headers: { Authorization: `Bearer ${apiToken}` } }
-  )
-  const blogs = blogPosts.data.data.blogs.filter(blog => blog !== null).sort((a, b) => new Date(strapiDateToDateString(b.Publication)) - new Date(strapiDateToDateString(a.Publication)))
-  blogs.forEach(blog => {
-    const domContent = new JSDOM(`<div class="domContent" >${blog.Content}</div>`)
-    blog.TextContent = `${domContent.window.document.querySelector('.domContent').textContent}`
+export async function getStaticProps () {
+  const posts = await axios.get(`${apiUrl}/bio-posts`, { headers: { Authorization: `Bearer ${apiToken}` } })
+  posts.data.forEach(post => {
+    const domContent = new JSDOM(`<div class="domContent" >${post.Post.Content}</div>`)
+    post.Post.TextContent = `${domContent.window.document.querySelector('.domContent').textContent}`
   })
-
-  const tutorialsLimit = await axios.get(`${apiUrl}/tutorials/count`, { headers: { Authorization: `Bearer ${apiToken}` } })
-  const tutorialPosts = await axios.post(`${apiUrl}/graphql`, {
-    query: `{
-      tutorials(limit: ${tutorialsLimit.data}) {
-        Title,
-        Content,
-        Slug,
-        published_at,
-        Publisher {
-          fullname,
-          description,
-          ProfilePicture {
-            url
-          }
-        },
-        Thumbnail {
-          formats
-        },
-        ThumbnailBgColorHex,
-        TitleColor
-      }
-    }`
-    },
-    { headers: { Authorization: `Bearer ${apiToken}` } }
-  )
-  const tutorials = tutorialPosts.data.data.tutorials
-
-  tutorials.forEach(tut => {
-    const domContent = new JSDOM(`<div class="domContent" >${tut.Content}</div>`)
-    tut.TextContent = `${domContent.window.document.querySelector('.domContent').textContent}`
-  })
-
+  posts.data = posts.data.sort((a, b) => a.id - b.id)
   return {
     props: {
       // Blogs,
-      content: {
-        ...tutorials,
-        ...blogs
-      }
+      content: posts.data
     }
   }
 }

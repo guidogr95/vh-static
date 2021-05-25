@@ -1,11 +1,11 @@
 import { forwardRef } from 'react'
 
 const Input = forwardRef((props, ref) => {
-    const { size, hideHandles } = props
+    const { size, hideHandles, className } = props
     const innerSize = size || 'regular'
     return (
         <>
-            <input {...props} ref={ref} className={`form-control me-2 ${innerSize}${hideHandles ? ' hide-handles' : ''}`} />
+            <input {...props} ref={ref} className={`form-control me-2 ${innerSize}${hideHandles ? ' hide-handles' : ''}${className && ` ${className}`}`} />
             <style jsx>{`
                 .small {
                     height: 40px;

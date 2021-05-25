@@ -3,10 +3,10 @@ import { colors } from 'styles/theme'
 // Assets
 import Placeholder from 'public/assets/media/images/user.svg'
 
-const Avatar = ({ hideHalfCircle, halfCircleColor, picture }) => {
+const Avatar = ({ hideHalfCircle, halfCircleColor, picture, showCircle }) => {
     return (
         <>
-            <div>
+            <div className={`${!showCircle ? 'hideCircle' : ''}`} >
                 <a className="avatar-link" href="#" >
                     <img alt="profile picture" src={picture || Placeholder} />
                 </a>
@@ -18,6 +18,9 @@ const Avatar = ({ hideHalfCircle, halfCircleColor, picture }) => {
                 </svg>
             </div>
             <style jsx>{`
+                .hideCircle svg {
+                    display: none;
+                }
                 .avatar-link {
                     position: relative;
                     display: block;

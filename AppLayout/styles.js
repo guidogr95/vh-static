@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css'
 // theme
-import { colors, fonts, breakpoints, gradients, borderRadius, shadows } from 'styles/theme'
+import { colors, fonts, breakpoints, gradients, borderRadius, shadows, mediumBorderRadius } from 'styles/theme'
 
 export const globalStyles = css.global`
     html,
@@ -18,6 +18,15 @@ export const globalStyles = css.global`
     input,
     button {
         font-family: ${fonts.base} !important;
+    }
+    h3 {
+        font-size: 1.3rem;
+    }
+    .app-layout {
+        position: relative;
+    }
+    .textarea-no-resize {
+        resize: none;
     }
     a {
         color: inherit;
@@ -149,6 +158,12 @@ export const globalStyles = css.global`
         width: 1px;
         word-wrap: normal!important;
     }
+    .gradientFont-day {
+        color: ${colors.day};
+        background: ${gradients.lightDay};
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
     ul {
         list-style-position: inside;
     }
@@ -178,6 +193,51 @@ export const globalStyles = css.global`
         background: ${gradients.lightDay};
         color: ${colors.white};
         box-shadow: ${shadows.inputDarker};
+    }
+    .centeredBlock {
+        margin-left: 25vh;
+        margin-right: 25vh;
+    }
+    .mt-small {
+        margin-top: 16px;
+    }
+    .mb-none {
+        margin-bottom: 0;
+    }
+    .mb-small {
+        margin-bottom: 16px;
+    }
+    .mb-regular {
+        margin-bottom: 24px;
+    }
+    .mb-lg {
+        margin-bottom: 40px;
+    }
+    .singleCircle-bg {
+        position: relative;
+        background: ${colors.purple};
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+    }
+    .singleCircle-bg:after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        background: ${colors.lightPurple};
+        width: 304px;
+        height: 304px;
+        top: 26px;
+        right: -170px;
+    }
+    .borderRadius-md {
+        border-top-right-radius: ${mediumBorderRadius};
+        border-bottom-right-radius: ${mediumBorderRadius};
+        border-top-left-radius: ${mediumBorderRadius};
+        border-bottom-left-radius: ${mediumBorderRadius};
+    }
+    .fw-300 {
+        font-weight: 300;
     }
     @media screen and (max-width: ${breakpoints.mediumDesktop}) {
         .containerSection {

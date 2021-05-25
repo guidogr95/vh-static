@@ -30,7 +30,7 @@ const NavBar = ({ navButtons }) => {
     const scrollHandler = () => {
         if (!secondaryNavRef?.current || !navContainerRef?.current) return
         const navContainer = navContainerRef.current
-        if (window.scrollY >= secondaryNavRef.current.offsetHeight) {
+        if (window.scrollY >= navContainer.offsetHeight) {
             !navContainer.classList.contains('sticky') && setSticky(true)
         } else {
             navContainer.classList.contains('sticky') && setSticky(false)
@@ -47,53 +47,61 @@ const NavBar = ({ navButtons }) => {
 
     return (
         <>
-            <div className={`navContainer${sticky ? ' sticky' : ''}`} ref={navContainerRef} >
-                <div className="secondary-nav-wrapper" ref={secondaryNavRef} >
-                    <div className="secondary-nav" >
-                        <div className="sec-item" >
-                            <a href="https://vexxhost.com/contact-us/" rel="noopener noreferer" >
-                                Contact Us
-                            </a>
-                        </div>
-                        <div className="sec-item" >
-                            <a href="https://status.vexxhost.com/" rel="noopener noreferer" >
-                                <span className="sec-item__icon" ><FaInfoCircle /></span>
-                                <span className="sec-item__text" >Status</span>
-                            </a>
-                        </div>
-                        <div className="sec-item signup" >
-                            <a href="https://secure.vexxhost.com/billing/register.php?flow=cloudconsole" rel="noopener noreferer" >
-                                <span className="sec-item__icon" ><FaUserPlus /></span>
-                                <span className="sec-item__text" >Sign Up</span>
-                            </a>
-                        </div>
-                        <div className="sec-item" >
-                            <a href="https://secure.vexxhost.com/billing/clientarea.php" rel="noopener noreferer" >
-                                <span className="sec-item__icon" ><FaSignInAlt /></span>
-                                <span className="sec-item__text" >Sign In</span>
-                            </a>
+            <div className="navBar-wrapper" >
+                <div className={`navContainer${sticky ? ' sticky' : ''}`} ref={navContainerRef} id="navBar" >
+                    <div className="secondary-nav-wrapper" ref={secondaryNavRef} >
+                        <div className="secondary-nav" >
+                            <div className="sec-item" >
+                                <a href="https://vexxhost.com/contact-us/" rel="noopener noreferer" >
+                                    Contact Us
+                                </a>
+                            </div>
+                            <div className="sec-item" >
+                                <a href="https://status.vexxhost.com/" rel="noopener noreferer" >
+                                    <span className="sec-item__icon" ><FaInfoCircle /></span>
+                                    <span className="sec-item__text" >Status</span>
+                                </a>
+                            </div>
+                            <div className="sec-item signup" >
+                                <a href="https://secure.vexxhost.com/billing/register.php?flow=cloudconsole" rel="noopener noreferer" >
+                                    <span className="sec-item__icon" ><FaUserPlus /></span>
+                                    <span className="sec-item__text" >Sign Up</span>
+                                </a>
+                            </div>
+                            <div className="sec-item" >
+                                <a href="https://secure.vexxhost.com/billing/clientarea.php" rel="noopener noreferer" >
+                                    <span className="sec-item__icon" ><FaSignInAlt /></span>
+                                    <span className="sec-item__text" >Sign In</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
+                    <nav className="top" >
+                        <Link prefetch={false} href="/" >
+                            <a className="logoLink">
+                                <img className="navLogo" alt="standard-logo-horizontal" src={Logo} />
+                                <img className="navLogo sticky" alt="standard-logo-icon" src={LogoIcon} />
+                            </a>
+                        </Link>
+                        <button
+                            className="hamburger"
+                            onClick={handleNav}
+                        >
+                            <FaBars />
+                        </button>
+                        <NavMenu
+                            navButtons={navButtons}
+                        />
+                    </nav>
                 </div>
-                <nav className="top" >
-                    <Link prefetch={false} href="/" >
-                        <a className="logoLink">
-                            <img className="navLogo" alt="standard-logo-horizontal" src={Logo} />
-                            <img className="navLogo sticky" alt="standard-logo-icon" src={LogoIcon} />
-                        </a>
-                    </Link>
-                    <button
-                        className="hamburger"
-                        onClick={handleNav}
-                    >
-                        <FaBars />
-                    </button>
-                    <NavMenu
-                        navButtons={navButtons}
-                    />
-                </nav>
             </div>
             <style jsx>{`
+                .navBar-wrapper {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                }
                 .secondary-nav-wrapper {
                     display: flex;
                     justify-content: center;

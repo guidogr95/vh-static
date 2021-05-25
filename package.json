@@ -31,7 +31,7 @@
     "react-icons": "^4.1.0",
     "react-masonry-css": "^1.0.14",
     "react-player": "^2.8.2",
-    "react-spring": "^9.1.2",
+    "react-spring": "^8.0.27",
     "uuidv4": "^6.2.6"
   },
   "devDependencies": {

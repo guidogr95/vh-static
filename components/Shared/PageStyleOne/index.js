@@ -1,10 +1,26 @@
+import { useRef, useEffect } from 'react'
 // Theme
 import { colors, largeBorderRadius } from 'styles/theme'
+// Utils
+import useWindowSize from 'utils/useWindowSize'
+import useDebounce from 'utils/useDebounce'
 
 const PageStyleOne = ({ children }) => {
+
+  const bodyRef = useRef(null)
+
+  const windowSize = useWindowSize()
+  const debouncedWindowSize = useDebounce(windowSize, 400)
+
+  useEffect(() => {
+    const navBar = document.getElementById('navBar')
+    if (!bodyRef || !navBar) return
+    bodyRef.current.style.paddingTop = `${navBar.offsetHeight}px`
+  }, [debouncedWindowSize])
+
   return (
     <>
-      <section>
+      <div className="header-container" >
         <div className="section-header__wrapper" >
           <div className="section-header" >
             <div className="circle-overlay" />
@@ -12,24 +28,34 @@ const PageStyleOne = ({ children }) => {
             <div className="circle-overlay" />
           </div>
         </div>
-        {children}
-      </section>
+        <div className="body-wrapper" ref={bodyRef} >
+          {children}
+        </div>
+      </div>
       <style jsx>{`
-        section {
+        .body-wrapper {
+          overflow: hidden;
+        }
+        .header-container {
           position: relative;
-          min-height: 100vh;
           width: 100%;
         }
-        section .section-header__wrapper {
+        .header-container .section-header__wrapper {
           position: absolute;
-          margin: 20px;
-          min-height: 928px;
+          padding: 20px 20px 0 20px;
+          min-height: 628px;
+          height: 100vh;
           left: 0;
           right: 0;
+          z-index: -1;
+        }
+        .section-header {
+          overflow: hidden;
           background: ${colors.purple};
           border-radius: ${largeBorderRadius};
-          overflow: hidden;
-          z-index: 1;
+          position: relative;
+          height: 100%;
+          width: 100%;
         }
         .section-header .circle-overlay {
           background: ${colors.lightPurple};

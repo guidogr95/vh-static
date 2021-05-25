@@ -71,7 +71,7 @@ const RatePricingInput = ({ pricingData, isMultiple, label, deleteInput, id, par
   }, [innerMin])
 
   useEffect(() => {
-    if (loaded) return
+    if (loaded || !monthlyPricing) return
     const productIndex = pricingSummary.findIndex(product => product.id === parentId)
     if (productIndex < 0) return
     const pricingSummaryCopy = Array.from(pricingSummary)
@@ -95,8 +95,7 @@ const RatePricingInput = ({ pricingData, isMultiple, label, deleteInput, id, par
       ]
     } else {
       if (pricingSummaryCopy[productIndex]?.monthlyPricing === undefined) {
-        const shouldAdd = productIndex === 0 ? true : pricingSummaryCopy[parseInt(productIndex) - 1]?.monthlyPricing !== undefined
-        if (shouldAdd) pricingSummaryCopy[productIndex].monthlyPricing = monthlyPricing
+        pricingSummaryCopy[productIndex].monthlyPricing = monthlyPricing
         pricingSummaryCopy[productIndex].activePriceTableItemId = id
         pricingSummaryCopy[productIndex].multiplier = multiplier
       }
@@ -104,7 +103,7 @@ const RatePricingInput = ({ pricingData, isMultiple, label, deleteInput, id, par
 
     setPricingSummary(pricingSummaryCopy)
     setLoaded(true)
-  }, [pricingSummary])
+  }, [pricingSummary, monthlyPricing])
 
   useEffect(() => {
     const productIndex = pricingSummary.findIndex(product => product.id === parentId)

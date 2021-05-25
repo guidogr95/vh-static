@@ -1,5 +1,6 @@
 import { createContext, useContext } from 'react'
-import { Transition, useSprings, useSpring, config, animated } from 'react-spring'
+import { useSprings, useSpring, config, animated } from 'react-spring'
+import { Transition } from 'react-spring/renderprops.cjs'
 
 const springContext = createContext()
 

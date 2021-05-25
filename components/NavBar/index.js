@@ -53,7 +53,7 @@ const NavBar = ({ navButtons }) => {
 
     return (
         <>
-            <div className="navContainer" >
+            <div className="navContainer" id="navBar" >
                 <div className="dropdownBackground" />
                 <nav className="top" >
                     <Link prefetch={false} href="/" >

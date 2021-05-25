@@ -49,7 +49,9 @@ export const shadows = {
   inputDarker: '0px 12px 20px rgba(0, 0, 0, 0.16)',
   inputDarkerPressed: '0px 12px 30px rgba(0, 0, 0, 0.3)',
   day: '20px 20px 60px #562ed9, -20px -20px 60px #743eff',
-  white: '14px 14px 28px #f2f2f2, -14px -14px 28px #ffffff'
+  white: '14px 14px 28px #f2f2f2, -14px -14px 28px #ffffff',
+  cardRegular: '0px 20px 40px rgba(0, 0, 0, 0.12)',
+  cardSoft: '0px 4px 6px rgba(0, 0, 0, 0.12)'
 }
 
 export const borderRadius = '6px'

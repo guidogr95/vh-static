@@ -1,12 +1,12 @@
 // Theme
 import { colors, mediumBorderRadius } from 'styles/theme'
 
-const BioPost = ({ date, title, description, thumbnail }) => {
+const BioPost = ({ date, title, description, thumbnail, slug }) => {
   const descriptionMaxLength = 163
   return (
     <>
       <article>
-        <a href="#" >
+        <a href={slug} target="_blank" rel="noopener noreferrer" >
           <div className="thumbnail-ellipsis" />
           <div className="thumbnail-img" />
           <time>{date}</time>
@@ -52,8 +52,11 @@ const BioPost = ({ date, title, description, thumbnail }) => {
         }
         h6 {
           margin-bottom: 16px;
-          max-width: 216px;
+          max-width: 60%;
           line-height: 1.2;
+          z-index: 3;
+          position: relative;
+          border-radius: ${mediumBorderRadius};
         }
         time {
           letter-spacing: 0.02em;
@@ -64,7 +67,6 @@ const BioPost = ({ date, title, description, thumbnail }) => {
         .description {
           letter-spacing: 0.02em;
           color: ${colors.blackTwo};
-
           display: -webkit-box;
           -webkit-box-orient: vertical;
           overflow: hidden;

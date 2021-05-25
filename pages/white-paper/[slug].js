@@ -25,6 +25,7 @@ const slug = ({ BookCover, Content }) => {
       <style jsx>{`
         .body-wrapper {
           position: relative;
+          overflow: hidden;
         }
         section {
           display: grid;
