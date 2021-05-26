@@ -2,10 +2,10 @@
 import renderWithProps from 'utils/renderWithProps'
 import getPaths from 'utils/getPaths'
 import jsdom from 'jsdom'
-import { axios, dynamic } from 'utils/imports'
+import { dynamic } from 'utils/imports/packages'
 import strapiDateToDateString from 'utils/strapiDateToDateString'
-// Contants
-import { apiUrl, apiToken } from 'config/constants'
+// Site Data
+import { Pages, Blogs as blogs, Tutorials as tutorials, NavButtons, FooterData } from 'utils/imports/siteData'
 // Components
 const FallbackController = dynamic(() => import('components/Shared/FallbackController'))
 
@@ -34,11 +34,8 @@ const slug = (props) => {
 
 // This function gets called at build time
 export async function getStaticPaths () {
-  // Call an external API endpoint to get pages
-  const res = await axios.get(`${apiUrl}/pages`, { headers: { Authorization: `Bearer ${apiToken}` } })
-  const pages = res.data
   // Get the paths we want to pre-render based on pages. Exclude home page
-  const paths = getPaths(pages).filter(page => page !== '/home')
+  const paths = getPaths(Pages).filter(page => page !== '/home')
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false }
@@ -48,74 +45,14 @@ export async function getStaticPaths () {
 export async function getStaticProps ({ params }) {
   const { slug } = params
   const Slug = slug[slug.length - 1]
-  const pageData = await axios.get(`${apiUrl}/pages?Slug=${Slug}`, { headers: { Authorization: `Bearer ${apiToken}` } })
-  const navRes = await axios.get(`${apiUrl}/main-menu`, { headers: { Authorization: `Bearer ${apiToken}` } })
-  const navButtons = navRes.data.MenuItemMain
-
-  const footerRes = await axios.get(`${apiUrl}/footer`, { headers: { Authorization: `Bearer ${apiToken}` } })
-  const FooterData = footerRes.data
-
-  const blogLimit = await axios.get(`${apiUrl}/blogs/count`, { headers: { Authorization: `Bearer ${apiToken}` } })
-
-  const blogPosts = await axios.post(`${apiUrl}/graphql`, {
-    query: `{
-      blogs(limit: ${blogLimit.data}) {
-        Title,
-        Content,
-        Slug,
-        Publication,
-        Featured,
-        Publisher {
-          fullname,
-          description,
-          ProfilePicture {
-            url
-          }
-        },
-        Thumbnail {
-          formats
-        },
-        ThumbnailBgColorHex,
-        TitleColor
-      }
-    }`
-    },
-    { headers: { Authorization: `Bearer ${apiToken}` } }
-  )
-  const Blogs = blogPosts.data.data.blogs.filter(blog => blog !== null).sort((a, b) => new Date(strapiDateToDateString(b.Publication)) - new Date(strapiDateToDateString(a.Publication)))
-
-  const tutorialPosts = await axios.post(`${apiUrl}/graphql`, {
-    query: `{
-      tutorials {
-        Title,
-        Content,
-        Slug,
-        published_at,
-        Publisher {
-          fullname,
-          description,
-          ProfilePicture {
-            url
-          }
-        },
-        Thumbnail {
-          formats
-        },
-        ThumbnailBgColorHex,
-        TitleColor
-      }
-    }`
-    },
-    { headers: { Authorization: `Bearer ${apiToken}` } }
-  )
-  const Tutorials = tutorialPosts.data.data.tutorials
-
+  const pageData = Pages.find(page => page.Slug === Slug)
+  const Blogs = blogs.filter(blog => blog !== null).sort((a, b) => new Date(strapiDateToDateString(b.Publication)) - new Date(strapiDateToDateString(a.Publication)))
+  const Tutorials = tutorials
   Tutorials.forEach(tut => {
     const domContent = new JSDOM(`<div class="domContent" >${tut.Content}</div>`)
     tut.TextContent = `${domContent.window.document.querySelector('.domContent').textContent}`
   })
-
-  return { props: { ...pageData.data[0], navButtons, Pathname: Slug, Blogs, FooterData, Tutorials } }
+  return { props: { ...pageData, NavButtons, Pathname: Slug, Blogs, FooterData, Tutorials } }
 }
 
 export default slug

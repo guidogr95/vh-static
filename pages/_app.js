@@ -12,7 +12,7 @@ import Footer from 'components/Shared/Footer'
 import { ProvideSpring } from 'context/springContext'
 
 function MyApp ({ Component, pageProps }) {
-  const { navButtons, PostSEO, FooterData, Slug, slugPrefix, Parent } = pageProps
+  const { NavButtons, PostSEO, FooterData, Slug, slugPrefix, Parent } = pageProps
   const fullSlug = Parent ? getPaths(pageProps, true) : `/${Slug}`
   return (
     <>
@@ -22,7 +22,7 @@ function MyApp ({ Component, pageProps }) {
       />
       <AppLayout>
         <ProvideSpring>
-          { navButtons && <NavBarClassic navButtons={navButtons} /> }
+          { NavButtons && <NavBarClassic navButtons={NavButtons} /> }
           <Component {...pageProps} />
           { FooterData && <Footer footerData={FooterData} /> }
         </ProvideSpring>
