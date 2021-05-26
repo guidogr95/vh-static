@@ -4,11 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
+    "build": "node ./builder/fetch.js && next build && next export && serve out",
     "buildsimple": "next build",
     "lint": "eslint . --fix",
-    "start": "next start",
-    "buildWithData": "node ./builder/fetch.js && next build && next export && serve out",
+    "start": "next start -p 5000",
     "fetch": "node ./builder/fetch.js"
   },
   "dependencies": {

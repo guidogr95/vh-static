@@ -20,6 +20,5 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 1. Replace apiUrl (url to the strapi server) and apiToken (api token found in documentation section in strapi) from strapi with env variables in builder/fetch.js
 2. When running the command below, the first thing to be executed is a script that will fetch all the data necessary to build the website
 
-npm run buildWithData
-
+npm run build
 Static files will be exported to the folder /out
