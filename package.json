@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node ./builder/fetch.js && next build && next export && serve out",
+    "build": "node ./builder/fetch.js && next build && next export",
     "buildsimple": "next build",
     "lint": "eslint . --fix",
     "start": "next start -p 5000",
