@@ -9,8 +9,6 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -23,7 +21,5 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 **The current strapi service on render doesn't have the necessary plugins for the api (documentation plugin) so it is necessary to use the apiurl and apitoken from one of the PRs. The apiurl is just the link to the platform and the api token can be found under the documentation tab in the admin dashboaard**
 
 npm run build
-or
-yarn build
 
 Static files will be exported to the folder /out

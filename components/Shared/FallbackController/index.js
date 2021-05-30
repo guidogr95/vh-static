@@ -4,7 +4,9 @@ import FallbackScreen from 'components/Shared/FallbackScreen'
 import { useRouter } from 'next/router'
 
 const FallbackController = ({ children }) => {
+
     const router = useRouter()
+
     if (router.isFallback) {
         return (
             <FallbackScreen />

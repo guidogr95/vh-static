@@ -11,7 +11,7 @@ import { RiArrowDropRightFill } from 'react-icons/ri'
 // Theme
 import { colors } from 'styles/theme'
 // Constants
-import { host, prodHost } from 'config/constants'
+import { host } from 'config/constants'
 
 const NavButton = ({ slug, label, submenu, index, linkType }) => {
 
@@ -79,7 +79,7 @@ const NavButton = ({ slug, label, submenu, index, linkType }) => {
             <li className="menuItem-parent" id={`navItem${index + 1}`} >
                 <Link
                     prefetch={false}
-                    href={`${linkType === 'Custom' ? slug : process.env.NODE_ENV === 'development' ? `${host}${slug}` : `${prodHost}${slug}`}`}
+                    href={`${linkType === 'Custom' ? slug : process.env.NODE_ENV === 'development' ? `${host}${slug}` : slug}`}
                 >
                     <a className="menuItem main" >
                         <span>{label}</span>{(submenu && submenu?.length > 0) && <FiChevronDown />}
