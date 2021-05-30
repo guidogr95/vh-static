@@ -1,10 +1,6 @@
 import css from 'styled-jsx/css'
 // theme
-<<<<<<< HEAD
 import { colors, fonts, breakpoints, gradients, borderRadius, shadows, mediumBorderRadius } from 'styles/theme'
-=======
-import { colors, fonts, breakpoints } from 'styles/theme'
->>>>>>> 23fe49037215cc6e3f2890ab4a92e7b5b59a3974
 
 export const globalStyles = css.global`
     html,
@@ -23,7 +19,6 @@ export const globalStyles = css.global`
     button {
         font-family: ${fonts.base} !important;
     }
-<<<<<<< HEAD
     h3 {
         font-size: 1.3rem;
     }
@@ -33,8 +28,6 @@ export const globalStyles = css.global`
     .textarea-no-resize {
         resize: none;
     }
-=======
->>>>>>> 23fe49037215cc6e3f2890ab4a92e7b5b59a3974
     a {
         color: inherit;
         text-decoration: none;
@@ -58,7 +51,6 @@ export const globalStyles = css.global`
     }
     .btn {
         min-width: 140px;
-<<<<<<< HEAD
         text-transform: uppercase;
         border-radius: ${borderRadius};
         line-height: 2;
@@ -76,18 +68,10 @@ export const globalStyles = css.global`
     }
     .btn-light:hover {
         background: ${colors.white};
-=======
-    }
-    .btn-brand {
-        background: linear-gradient(to right, #8e2de2, #4a00e0);
-        box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
-        color: ${colors.whiteGray};
->>>>>>> 23fe49037215cc6e3f2890ab4a92e7b5b59a3974
     }
     .btn-brand:hover {
         color: ${colors.whiteGray};
     }
-<<<<<<< HEAD
     .btn-light,
     select {
         background: ${colors.trueWhite};
@@ -95,10 +79,6 @@ export const globalStyles = css.global`
     }
     .htmlContent :global(figure img) {
         width: 100%;
-=======
-    .htmlContent :global(figure img) {
-                    width: 100%;
->>>>>>> 23fe49037215cc6e3f2890ab4a92e7b5b59a3974
     }
     .htmlContent :global(p),
     .htmlContent :global(figure),
