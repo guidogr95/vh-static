@@ -7,16 +7,14 @@ const ServicesStyleOne = () => {
   return (
     <>
       <section className="containerSection" >
-        <div className="services-wrapper centeredBlock" >
-          <div className="services__text mb-lg" >
+        <div className="services-wrapper two-column-tout--s1 centeredBlock" >
+          <div className="tout__text mb-xlg" >
            <h2 className="gradientFont-day mb-small">Services</h2>
            <p className="fw-300" >Infrastructure solutions built to meet your needs</p>
           </div>
           <div className="services_bg" >
             <div className="bg-container" >
-              <div className="singleCircle-bg borderRadius-md" >
-
-              </div>
+              <div className="singleCircle-bg borderRadius-md" />
             </div>
           </div>
           <ul className="services__items" >
@@ -46,18 +44,13 @@ const ServicesStyleOne = () => {
       </section>
       <style jsx>{`
         section {
-          height: 900px;
+          height: 550px;
         }
         .centeredBlock {
           margin-right: 0;
           width: 100%;
         }
-        .services__text {
-          padding-right: 70px;
-        }
         .services-wrapper {
-          display: grid;
-          grid-template-columns: 310px auto;
           grid-auto-rows: minmax(min-content, max-content);
         }
         .bg-container {

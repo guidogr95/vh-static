@@ -7,6 +7,8 @@ import { Pages, Blogs as blogs, NavButtons, FooterData } from 'utils/imports/sit
 import HeroStyleOne from 'components/Shared/HeroComponents/HeroStyleOne'
 import TestimonialsStyleOne from 'components/Shared/Testimonials/TestimonialsStyleOne'
 import ServicesStyleOne from 'components/Shared/Services/ServicesStyleOne'
+import TwoColumnToutStyleOne from 'components/Shared/TwoColumnTout/StyleOne'
+import TwoColumnToutStyleTwo from 'components/Shared/TwoColumnTout/StyleTwo'
 const FallbackController = dynamic(() => import('components/Shared/FallbackController'))
 
 const index = ({ Body, Pathname, Blogs }) => {
@@ -15,6 +17,8 @@ const index = ({ Body, Pathname, Blogs }) => {
       <HeroStyleOne />
       <TestimonialsStyleOne />
       <ServicesStyleOne/>
+      <TwoColumnToutStyleOne />
+      <TwoColumnToutStyleTwo />
       {/* <TestimonialsStyleOne />
       <TestimonialsStyleOne />
       <TestimonialsStyleOne />
@@ -42,7 +46,13 @@ export async function getStaticProps () {
   const Blogs = blogs.sort((a, b) => new Date(b.published_at) - new Date(a.published_at))
 
   // Pass post data to the page via props
-  return { props: { ...page, NavButtons, Blogs, FooterData } }
+  return { props: {
+    ...page,
+    NavButtons,
+    Blogs,
+    FooterData
+    }
+  }
 }
 
 export default index

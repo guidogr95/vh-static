@@ -211,6 +211,9 @@ export const globalStyles = css.global`
         margin-bottom: 24px;
     }
     .mb-lg {
+        margin-bottom: 32px;
+    }
+    .mb-xlg {
         margin-bottom: 40px;
     }
     .singleCircle-bg {
@@ -238,6 +241,24 @@ export const globalStyles = css.global`
     }
     .fw-300 {
         font-weight: 300;
+    }
+    /* touts */
+    /* two column tout style 1*/
+    .two-column-tout--s1 .tout__text {
+        padding-right: 70px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .two-column-tout--s1 {
+        display: grid;
+        grid-template-columns: 310px auto;
+    }
+    .two-column-tout--s1 .tout__column-two-items {
+        box-shadow: ${shadows.cardRegular};
+        border-radius: ${mediumBorderRadius};
+        overflow: hidden;
+        padding: 50px 25vh 50px 70px;
     }
     @media screen and (max-width: ${breakpoints.mediumDesktop}) {
         .containerSection {

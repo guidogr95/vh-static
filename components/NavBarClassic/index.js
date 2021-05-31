@@ -44,7 +44,7 @@ const NavBar = ({ navButtons }) => {
 
     return (
         <>
-            <div className={`navContainer${sticky ? ' sticky' : ''}`} ref={navContainerRef} >
+            <div className={`navContainer${sticky ? ' sticky' : ''}`} ref={navContainerRef} id='navBar' >
                 <div className="secondary-nav-wrapper" ref={secondaryNavRef} >
                     <div className="secondary-nav" >
                         <div className="sec-item" >
