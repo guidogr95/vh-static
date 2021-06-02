@@ -7,7 +7,7 @@ const TwoColumnToutStyleOne = () => {
       <section className="containerSection" >
         <div className="two-column-tout--s1 centeredBlock" >
           <div className="tout__text" >
-           <h2 className="gradientFont-day mb-small">What we do</h2>
+           <h2 className="gradientFont-day mb-small mw-md">What we do</h2>
            <p className="fw-300 mb-none" >At VEXXHOST, we offer cost-conscious, complete, and widely flexible infrastructure and cloud solutions, allowing users to take advantage of:</p>
           </div>
           <div className="tout__column-two-items" >

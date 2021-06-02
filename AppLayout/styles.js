@@ -226,6 +226,9 @@ export const globalStyles = css.global`
     .mb-xlg {
         margin-bottom: 40px;
     }
+    .mw-md {
+        max-width: 270px;
+    }
     .section-pd-md {
         padding-top: 80px;
         padding-bottom: 80px;
@@ -257,6 +260,35 @@ export const globalStyles = css.global`
     }
     .fw-300 {
         font-weight: 300;
+    }
+    /* swiper content */
+    /* Style 1 */
+    .custom-swiper-nav--s1 {
+          display: grid;
+          column-gap: 20px;
+          grid-template-columns: repeat(2, 1fr);
+        }
+    .custom-swiper-nav--s1 button {
+        color: ${colors.lightPurple};
+        background: none;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2em;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        transition: .3s ease-out all;
+    }
+    .custom-swiper-nav--s1 .prev-button {
+        padding-right: 15%; 
+    }
+    .custom-swiper-nav--s1 .next-button {
+        padding-left: 15%; 
+    }
+    .custom-swiper-nav--s1 .swiper-button-disabled {
+        opacity: 0.5;
     }
     /* touts */
     /* two column tout style 1*/

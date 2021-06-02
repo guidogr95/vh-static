@@ -3,9 +3,10 @@ import { useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Navigation } from 'swiper'
 // Components
-import WESwiperCard from './WESwiperCard'
+import WESwiperCard from 'components/Shared/ContentSwipers/SwiperCards/WESwiperCard'
+import BlogSwiperCard from 'components/Shared/ContentSwipers/SwiperCards/BlogSwiperCard'
 // Component Data
-import { WpAndEbooks } from 'utils/imports/siteData'
+import { WpAndEbooks, Blogs } from 'utils/imports/siteData'
 // Assets
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 // Styles
@@ -14,14 +15,27 @@ import 'swiper/components/navigation/navigation.scss'
 
 SwiperCore.use([Navigation])
 
-const WhitepapersAndEbooksSwiper = () => {
+const SwiperStyleOne = ({
+    contentType,
+    spaceBetween = 50,
+    initialItemsInSwipe = 6,
+    itemsToAdd = 2,
+    slidesPerView = 2,
+    title
+}) => {
+
+  const contentTypes = {
+    Blogs,
+    WpAndEbooks
+  }
+
+  if (!contentTypes[contentType]) return null
 
   const prevElRef = useRef(null)
   const nextElRef = useRef(null)
-  const [itemsInSwipe, setItemsInSwipe] = useState(6)
+  const [itemsInSwipe, setItemsInSwipe] = useState(initialItemsInSwipe)
   const handlePagination = () => {
-    // if ()
-    setItemsInSwipe(itemsInSwipe + 2)
+    if (itemsInSwipe < contentTypes[contentType].length) setItemsInSwipe(itemsInSwipe + itemsToAdd)
   }
 
   return (
@@ -29,7 +43,7 @@ const WhitepapersAndEbooksSwiper = () => {
       <section className="centeredBlock section-pd-md" >
         <div className="section-title mb-xlg" >
           <h2 className="gradientFont-day mb-none mw-md" >
-            Know cloud and more
+            {title}
           </h2>
           <div className="custom-swiper-nav--s1" >
             <button
@@ -49,8 +63,8 @@ const WhitepapersAndEbooksSwiper = () => {
         </div>
         <div className="swiper-block mb-xlg" >
           <Swiper
-            spaceBetween={50}
-            slidesPerView={2}
+            spaceBetween={spaceBetween}
+            slidesPerView={slidesPerView}
             onInit={(swiper) => {
               swiper.params.navigation.prevEl = prevElRef.current
               swiper.params.navigation.nextEl = nextElRef.current
@@ -58,14 +72,23 @@ const WhitepapersAndEbooksSwiper = () => {
               swiper.navigation.update()
             }}
           >
-            {WpAndEbooks.slice(0, itemsInSwipe).map(item => {
+            {contentTypes[contentType].slice(0, itemsInSwipe).map(item => {
+              if (contentType === 'Blogs') console.log(item)
               return (
                 <SwiperSlide key={item.created_at}>
-                  <WESwiperCard
-                    Title={item.Title}
-                    Content={item.TextContent}
-                    Thumbnail={item?.Thumbnail?.url}
-                  />
+                  {contentType === 'Blogs' &&
+                    <BlogSwiperCard
+                      key={item.created_at || item.id}
+                    />
+                  }
+                  {contentType === 'WpAndEbooks' &&
+                    <WESwiperCard
+                      key={item.created_at || item.id}
+                      Title={item.Title}
+                      Content={item.TextContent}
+                      Thumbnail={item?.Thumbnail?.url}
+                    />
+                  }
                 </SwiperSlide>
               )
             })}
@@ -93,4 +116,4 @@ const WhitepapersAndEbooksSwiper = () => {
   )
 }
 
-export default WhitepapersAndEbooksSwiper
+export default SwiperStyleOne

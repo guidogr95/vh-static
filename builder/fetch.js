@@ -16,39 +16,20 @@ const fetchData = async () => {
     const footerRes = await axios.get(`${apiUrl}/footer`, { headers: { Authorization: `Bearer ${apiToken}` } })
     const footerData = footerRes.data
     const blogLimit = await axios.get(`${apiUrl}/blogs/count`, { headers: { Authorization: `Bearer ${apiToken}` } })
-    const blogPosts = await axios.post(`${apiUrl}/graphql`, {
-      query: `{
-        blogs(limit: ${blogLimit.data}) {
-          Title,
-          Content,
-          Slug,
-          published_at,
-          Publication,
-          Featured,
-          Publisher {
-            fullname,
-            description,
-            ProfilePicture {
-              url
-            }
-          },
-          Thumbnail {
-            formats
-          },
-          ThumbnailBgColorHex,
-          TitleColor
-        }
-      }`
-    },
-    { headers: { Authorization: `Bearer ${apiToken}` } }
-    )
-    const Blogs = blogPosts.data.data.blogs.filter(blog => blog !== null).sort((a, b) => new Date(strapiDateToDateString(b.Publication)) - new Date(strapiDateToDateString(a.Publication)))
-    const tutorials = await axios.get(`${apiUrl}/tutorials`, { headers: { Authorization: `Bearer ${apiToken}` } })
+    const blogPosts = await axios.get(`${apiUrl}/blogs?_limit=${blogLimit.data}`, { headers: { Authorization: `Bearer ${apiToken}` } })
+    const Blogs = blogPosts.data.filter(blog => blog !== null).sort((a, b) => new Date(strapiDateToDateString(b.Publication)) - new Date(strapiDateToDateString(a.Publication)))
+    Blogs.forEach(blog => {
+      const domContent = new JSDOM(`<div class="domContent" >${blog.Content}</div>`)
+      blog.TextContent = `${domContent.window.document.querySelector('.domContent').textContent}`
+    })
+    const tutorialLimit = await axios.get(`${apiUrl}/tutorials/count`, { headers: { Authorization: `Bearer ${apiToken}` } })
+    const tutorials = await axios.get(`${apiUrl}/tutorials?_limit=${tutorialLimit.data}`, { headers: { Authorization: `Bearer ${apiToken}` } })
     tutorials.data.forEach(tut => {
       const domContent = new JSDOM(`<div class="domContent" >${tut.Content}</div>`)
       tut.TextContent = `${domContent.window.document.querySelector('.domContent').textContent}`
     })
-    const wpandebooks = await axios.get(`${apiUrl}/whitepapers-and-ebooks`, { headers: { Authorization: `Bearer ${apiToken}` } })
+    const wpandeLimit = await axios.get(`${apiUrl}/whitepapers-and-ebooks/count`, { headers: { Authorization: `Bearer ${apiToken}` } })
+    const wpandebooks = await axios.get(`${apiUrl}/whitepapers-and-ebooks?_limit=${wpandeLimit.data}`, { headers: { Authorization: `Bearer ${apiToken}` } })
     wpandebooks.data.forEach(item => {
       const domContent = new JSDOM(`<div class="domContent" >${item.Content}</div>`)
       item.TextContent = `${domContent.window.document.querySelector('.domContent').textContent}`

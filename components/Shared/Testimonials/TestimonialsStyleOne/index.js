@@ -11,7 +11,7 @@ const TestimonialsStyleOne = () => {
       <section className="containerSection" >
         <main className="centeredBlock" >
           <article className="text-col" >
-            <h2 className="gradientFont-day" >We run clouds for</h2>
+            <h2 className="gradientFont-day mw-md" >We run clouds for</h2>
             <div className="client-logos" >
               <img alt="ebay" src={Ebay} />
               <img alt="cnn" src={Cnn} />

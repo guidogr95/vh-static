@@ -9,7 +9,7 @@ const ServicesStyleOne = () => {
       <section className="containerSection" >
         <div className="services-wrapper two-column-tout--s1 centeredBlock" >
           <div className="tout__text mb-xlg" >
-           <h2 className="gradientFont-day mb-small">Services</h2>
+           <h2 className="gradientFont-day mb-small mw-md">Services</h2>
            <p className="fw-300" >Infrastructure solutions built to meet your needs</p>
           </div>
           <div className="services_bg" >
