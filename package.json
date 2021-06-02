@@ -38,6 +38,7 @@
     "react-player": "^2.8.2",
     "react-spring": "^8.0.27",
     "sass-loader": "10.1.1",
+    "swiper": "^6.7.0",
     "uuidv4": "^6.2.6"
   },
   "devDependencies": {

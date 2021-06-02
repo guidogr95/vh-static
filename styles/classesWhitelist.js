@@ -20,7 +20,18 @@ const whiteList = [
     'card-body',
     'btn-light',
     'spinner-border',
-    'spinner-border-sm'
+    'spinner-border-sm',
+    'swiper-wrapper',
+    'swiper-container',
+    'swiper-container-initialized',
+    'swiper-container-horizontal',
+    'swiper-container-pointer-events',
+    'swiper-slide',
+    'swiper-slide-active',
+    'swiper-slide-next',
+    'swiper-button-prev',
+    'swiper-button-disabled',
+    'swiper-button-next'
 ]
 
 module.exports = { whiteList }

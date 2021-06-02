@@ -1,7 +1,11 @@
 const strapiDateToDateString = (strapiDate) => {
     const [year, month, day] = strapiDate.split('-')
-    const dateString = new Date(new Date(new Date(new Date().setMonth(parseInt(month) - 1)).setYear(parseInt(year))).setDate(parseInt(day))).toDateString()
-    return dateString
+    const date = new Date()
+    date.setHours(1)
+    date.setYear(parseInt(year))
+    date.setDate(parseInt(day))
+    date.setMonth(parseInt(month) - 1)
+    return date.toDateString()
 }
 
-export default strapiDateToDateString
+module.exports = strapiDateToDateString

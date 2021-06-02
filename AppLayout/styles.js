@@ -57,20 +57,30 @@ export const globalStyles = css.global`
     }
     .btn-brand {
         background: ${gradients.lightDay};
-        box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+        border: 2px solid transparent;
         color: ${colors.whiteGray};
+        letter-spacing: 0.03em;
         box-shadow: 5px 5px 20px rgba(160, 160, 160, 0.2);
+        padding: 8px 0.75rem;
+        width: fit-content;
+        width: max-content;
+        width: min-content;
     }
     .form-control {
         border-radius: ${borderRadius};
         box-shadow: ${shadows.input};
-        border: 1px solid transparent;
+        border: 2px solid transparent;
     }
     .btn-light:hover {
         background: ${colors.white};
     }
-    .btn-brand:hover {
-        color: ${colors.whiteGray};
+    .btn-brand:hover  {
+        color: ${colors.day};
+        background: ${gradients.lightDay};
+        -webkit-background-clip: text;
+        font-weight: bold;  
+        -webkit-text-fill-color: transparent;
+        border: 2px solid ${colors.purple};
     }
     .btn-light,
     select {
@@ -215,6 +225,12 @@ export const globalStyles = css.global`
     }
     .mb-xlg {
         margin-bottom: 40px;
+    }
+    .section-pd-md {
+        padding-top: 80px;
+        padding-bottom: 80px;
+        padding-right: 80px;
+        padding-left: 80px;
     }
     .singleCircle-bg {
         position: relative;

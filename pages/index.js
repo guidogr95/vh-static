@@ -9,6 +9,7 @@ import TestimonialsStyleOne from 'components/Shared/Testimonials/TestimonialsSty
 import ServicesStyleOne from 'components/Shared/Services/ServicesStyleOne'
 import TwoColumnToutStyleOne from 'components/Shared/TwoColumnTout/StyleOne'
 import TwoColumnToutStyleTwo from 'components/Shared/TwoColumnTout/StyleTwo'
+import WhitepapersAndEbooksSwiper from 'components/Shared/ContentSwipers/WhitepapersAndEbooksSwiper'
 const FallbackController = dynamic(() => import('components/Shared/FallbackController'))
 
 const index = ({ Body, Pathname, Blogs }) => {
@@ -19,6 +20,7 @@ const index = ({ Body, Pathname, Blogs }) => {
       <ServicesStyleOne/>
       <TwoColumnToutStyleOne />
       <TwoColumnToutStyleTwo />
+      <WhitepapersAndEbooksSwiper />
       {/* <TestimonialsStyleOne />
       <TestimonialsStyleOne />
       <TestimonialsStyleOne />

@@ -10,7 +10,7 @@ const TwoColumnToutStyleTwo = () => {
   return (
     <>
       <section className="two-column-tout--s2" >
-        <CircleBackgroundSection >
+        <CircleBackgroundSection className="section-pd-md" >
           <div className="tout__container centeredBlock" >
             <div className="tout__column-one" >
               <h2 className="gradientFont-day mb-small">
@@ -45,7 +45,8 @@ const TwoColumnToutStyleTwo = () => {
       </section>
       <style jsx>{`
       .two-column-tout--s2 :global(article) {
-          padding: 80px 0;
+          padding-right: 0;
+          padding-left: 0;
         }
         .two-column-tout--s2 :global(.tout__container) {
           border-radius: ${mediumBorderRadius};
@@ -72,7 +73,10 @@ const TwoColumnToutStyleTwo = () => {
           flex-direction: column;
         }
         .two-column-tout--s2 :global(.tout__column-two .column-two__item img) {
-          width: 55px;
+          height: 55px;
+          width: fit-content;
+          width: max-content;
+          widht: min-content;
         }
       `}</style>
     </>

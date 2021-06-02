@@ -1,15 +1,12 @@
 // Utils
 import renderWithProps from 'utils/renderWithProps'
 import getPaths from 'utils/getPaths'
-import jsdom from 'jsdom'
 import { dynamic } from 'utils/imports/packages'
 import strapiDateToDateString from 'utils/strapiDateToDateString'
 // Site Data
 import { Pages, Blogs as blogs, Tutorials as tutorials, NavButtons, FooterData } from 'utils/imports/siteData'
 // Components
 const FallbackController = dynamic(() => import('components/Shared/FallbackController'))
-
-const { JSDOM } = jsdom
 
 const slug = (props) => {
 
@@ -48,10 +45,6 @@ export async function getStaticProps ({ params }) {
   const pageData = Pages.find(page => page.Slug === Slug)
   const Blogs = blogs.filter(blog => blog !== null).sort((a, b) => new Date(strapiDateToDateString(b.Publication)) - new Date(strapiDateToDateString(a.Publication)))
   const Tutorials = tutorials
-  Tutorials.forEach(tut => {
-    const domContent = new JSDOM(`<div class="domContent" >${tut.Content}</div>`)
-    tut.TextContent = `${domContent.window.document.querySelector('.domContent').textContent}`
-  })
   return { props: { ...pageData, NavButtons, Pathname: Slug, Blogs, FooterData, Tutorials } }
 }
 
