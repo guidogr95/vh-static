@@ -106,7 +106,7 @@ const SignupForm = () => {
                 }
                 form :global(input),
                 form :global(button) {
-                    padding: 0.8rem 0.75rem;
+                    padding: 8px 0.75rem;
                     height: initial;
                 }
                 form :global(button) {

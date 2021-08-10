@@ -7,7 +7,7 @@ import useDebounce from 'utils/useDebounce'
 // Assets
 import HeroImage from 'public/assets/media/images/hero-image1.svg'
 // Theme
-import { colors, desktopMaxWidth, mediumBorderRadius } from 'styles/theme'
+import { breakpoints, colors, desktopMaxWidth, mediumBorderRadius } from 'styles/theme'
 
 const HeroStyleOne = () => {
   const sectionRef = useRef(null)
@@ -17,8 +17,9 @@ const HeroStyleOne = () => {
 
   useEffect(() => {
     const navBar = document.getElementById('navBar')
-    if (!sectionRef) return
-    sectionRef.current.style.height = `calc(100vh - ${navBar.offsetHeight}px)`
+    if (!sectionRef || navBar.classList.contains('sticky')) return
+    sectionRef.current.style.height = `calc(98vh - ${navBar.offsetHeight}px)`
+    sectionRef.current.style.maxHeight = `calc(${1000 - 20 - navBar.offsetHeight}px)`
   }, [debouncedWindowSize])
 
   return (
@@ -35,16 +36,21 @@ const HeroStyleOne = () => {
       </section>
       <style jsx>{`
         section {
-          padding: 80px 0 80px 0;
+          padding: 80px 20px 80px 40px;
+          min-height: 675px;
+          align-items: center;
         }
         main {
           max-width: ${desktopMaxWidth};
           width: 100%;
           display: grid;
-          grid-template-columns: minmax(100px, 350px) auto;
+          grid-template-columns: minmax(283px,350px) minmax(400px,auto);
           padding-left: 150px;
           column-gap: 85px;
           position: relative;
+          max-height: 650px;
+          align-items: center;
+          height: 100%;
         }
         main:after {
           content: '';
@@ -65,6 +71,48 @@ const HeroStyleOne = () => {
         }
         .img-holder img {
           width: 100%;
+        }
+        @media screen and (max-width: ${breakpoints.mediumDesktop}) {
+          main {
+            padding-left: 5rem;
+          }
+        }
+        @media screen and (max-width: ${breakpoints.smallDesktop}) {
+          main {
+            column-gap: 35px;
+          }
+        }
+        @media screen and (max-width: ${breakpoints.tabletLarge}) {
+          main {
+            padding: 40px;
+            grid-template-columns: repeat(2, 1fr);
+          }
+          section {
+            padding: 80px 40px;
+          }
+          main:after {
+            right: 0;
+            border-radius: ${mediumBorderRadius};
+          }
+        }
+        @media screen and (max-width: ${breakpoints.ipad}) {
+          section {
+            padding: 60px;
+          }
+          main {
+            display: flex;
+            flex-direction: column-reverse;
+          }
+          article {
+            width: 100%;
+            text-align: center;
+          }
+          .img-holder img {
+            width: fit-content;
+            width: max-content;
+            width: min-content;
+            margin: auto;
+          }
         }
       `}</style>
     </>

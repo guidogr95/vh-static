@@ -22,12 +22,15 @@ const BioPost = ({ date, title, description, thumbnail, slug }) => {
           background: ${colors.lightWhite};
           box-shadow: 0px 21px 43px rgba(0, 0, 0, 0.12);
           height: 267px;
+          position: relative;
+          overflow: hidden;
+        }
+        article a {
           display: flex;
           flex-direction: column;
           justify-content: center;
           padding: 64px 24px;
-          position: relative;
-          overflow: hidden;
+          height: 100%;
         }
         .thumbnail-img {
           content: '';

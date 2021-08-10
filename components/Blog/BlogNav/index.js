@@ -3,7 +3,7 @@ import BlogNavItem from './BlogNavItem'
 // Theme
 import { breakpoints, colors, desktopMaxWidth } from 'styles/theme'
 
-const BlogNav = ({ Pathname, ComponentProps }) => {
+const BlogNav = ({ ComponentProps }) => {
 
     const { BlogNavItem: navButtons } = ComponentProps
 
@@ -20,7 +20,6 @@ const BlogNav = ({ Pathname, ComponentProps }) => {
                                 key={button.Slug}
                                 slug={button.Slug}
                                 label={button.Label}
-                                pathname={Pathname}
                             />
                         )
                     })}

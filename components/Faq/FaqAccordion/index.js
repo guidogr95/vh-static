@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import Accordion from 'components/Shared/Accordion'
 // Theme
 import { borderRadius, breakpoints, colors, desktopMaxWidth } from 'styles/theme'
-import { apiUrl } from 'config/constants'
 
 const FaqAccordion = ({ ComponentProps }) => {
 

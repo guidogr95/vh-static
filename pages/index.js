@@ -1,8 +1,8 @@
 // Utils
 // import renderWithProps from 'utils/renderWithProps'
-import { dynamic } from 'utils/imports'
+import { dynamic } from 'utils/imports/packages'
 // Site Data
-import { Pages, Blogs as blogs, NavButtons, FooterData } from 'utils/imports/siteData'
+import { Pages, Blogs as blogs, NavButtons, FooterData, WpAndEbooks } from 'utils/imports/siteData'
 // Components
 import HeroStyleOne from 'components/Shared/HeroComponents/HeroStyleOne'
 import TestimonialsStyleOne from 'components/Shared/Testimonials/TestimonialsStyleOne'
@@ -10,6 +10,10 @@ import ServicesStyleOne from 'components/Shared/Services/ServicesStyleOne'
 import TwoColumnToutStyleOne from 'components/Shared/TwoColumnTout/StyleOne'
 import TwoColumnToutStyleTwo from 'components/Shared/TwoColumnTout/StyleTwo'
 import SwiperStyleOne from 'components/Shared/ContentSwipers/SwiperStyleOne'
+import WESwiperCard from 'components/Shared/ContentSwipers/SwiperCards/WESwiperCard'
+import BlogSwiperCard from 'components/Shared/ContentSwipers/SwiperCards/BlogSwiperCard'
+import CardStack from 'components/Shared/CardStack'
+// Assets
 const FallbackController = dynamic(() => import('components/Shared/FallbackController'))
 
 const index = ({ Body, Pathname, Blogs }) => {
@@ -22,26 +26,30 @@ const index = ({ Body, Pathname, Blogs }) => {
       <TwoColumnToutStyleTwo />
       <SwiperStyleOne
         title='Know cloud and more'
-        contentType='WpAndEbooks'
+        content={WpAndEbooks}
+        CardComponent={WESwiperCard}
       />
+      <CardStack />
       <SwiperStyleOne
-        title='Explore out latest content'
-        contentType='Blogs'
+        title='Explore our latest content'
+        slidesPerView={2}
+        initialItemsInSwipe={4}
+        itemsToAdd={2}
+        content={blogs}
+        CardComponent={BlogSwiperCard}
+        breakpoints={{
+          1366: {
+            slidesPerView: 3,
+            spaceBetween: 30
+          }
+        }}
       />
-      {/* <TestimonialsStyleOne />
-      <TestimonialsStyleOne />
-      <TestimonialsStyleOne />
-      <TestimonialsStyleOne />
-      <TestimonialsStyleOne />
-      <TestimonialsStyleOne />
-      <TestimonialsStyleOne />
-      <TestimonialsStyleOne /> */}
     </FallbackController>
     /* {Body && Body.map(bodyComponent => {
       return (
         renderWithProps({
           componentName: bodyComponent.__component,
-          props: { ...bodyComponent, Pathname, Blogs }
+          props: { ...bodyComponent, Slug, Blogs }
         })
       )
     })} */
@@ -50,16 +58,15 @@ const index = ({ Body, Pathname, Blogs }) => {
 
 // This also gets called at build time
 export async function getStaticProps () {
-  const page = Pages.find(page => page.Slug === '/home')
-
-  const Blogs = blogs.sort((a, b) => new Date(b.published_at) - new Date(a.published_at))
-
+  const page = Pages.find(page => page.Slug === 'home')
+  const displayBg = true
   // Pass post data to the page via props
-  return { props: {
+  return {
+      props: {
     ...page,
     NavButtons,
-    Blogs,
-    FooterData
+    FooterData,
+    displayBg
     }
   }
 }

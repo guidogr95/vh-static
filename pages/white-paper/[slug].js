@@ -40,7 +40,7 @@ const slug = ({ BookCover, Content }) => {
 // This function gets called at build time
 export async function getStaticPaths () {
   // Get the paths we want to pre-render based on pages
-  const paths = WpAndEbooks.map(page => `/white-paper/${page.Slug.trim()}`)
+  const paths = WpAndEbooks.map(page => `/${page.Slug.trim()}`)
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false }
@@ -48,8 +48,9 @@ export async function getStaticPaths () {
 
 // This also gets called at build time
 export async function getStaticProps ({ params }) {
-  const pageData = WpAndEbooks.find(item => item.Slug === params.slug)
-  return { props: { ...pageData, Pathname: params.slug } }
+  const pathPrefix = 'white-paper/'
+  const pageData = WpAndEbooks.find(item => item.Slug === `${pathPrefix}${params.slug}`)
+  return { props: { ...pageData } }
 }
 
 export default slug

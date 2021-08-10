@@ -2,11 +2,6 @@ import { useRef, useState } from 'react'
 // Utils
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Navigation } from 'swiper'
-// Components
-import WESwiperCard from 'components/Shared/ContentSwipers/SwiperCards/WESwiperCard'
-import BlogSwiperCard from 'components/Shared/ContentSwipers/SwiperCards/BlogSwiperCard'
-// Component Data
-import { WpAndEbooks, Blogs } from 'utils/imports/siteData'
 // Assets
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 // Styles
@@ -16,26 +11,23 @@ import 'swiper/components/navigation/navigation.scss'
 SwiperCore.use([Navigation])
 
 const SwiperStyleOne = ({
-    contentType,
+    CardComponent,
     spaceBetween = 50,
     initialItemsInSwipe = 6,
     itemsToAdd = 2,
     slidesPerView = 2,
-    title
+    title,
+    content,
+    breakpoints
 }) => {
 
-  const contentTypes = {
-    Blogs,
-    WpAndEbooks
-  }
-
-  if (!contentTypes[contentType]) return null
+  if (!Array.isArray(content) || content?.length === 0 || !CardComponent) return null
 
   const prevElRef = useRef(null)
   const nextElRef = useRef(null)
   const [itemsInSwipe, setItemsInSwipe] = useState(initialItemsInSwipe)
   const handlePagination = () => {
-    if (itemsInSwipe < contentTypes[contentType].length) setItemsInSwipe(itemsInSwipe + itemsToAdd)
+    if (itemsInSwipe < content.length) setItemsInSwipe(itemsInSwipe + itemsToAdd)
   }
 
   return (
@@ -48,13 +40,13 @@ const SwiperStyleOne = ({
           <div className="custom-swiper-nav--s1" >
             <button
               ref={prevElRef}
-              className="prev-button"
+              className="nav-btn-base--1 prev"
             >
               <FiChevronLeft/>
             </button>
             <button
               ref={nextElRef}
-              className="next-button"
+              className="nav-btn-base--1 next"
               onClick={handlePagination}
             >
               <FiChevronRight/>
@@ -65,30 +57,19 @@ const SwiperStyleOne = ({
           <Swiper
             spaceBetween={spaceBetween}
             slidesPerView={slidesPerView}
+            onSlideChange={() => handlePagination()}
             onInit={(swiper) => {
               swiper.params.navigation.prevEl = prevElRef.current
               swiper.params.navigation.nextEl = nextElRef.current
               swiper.navigation.init()
               swiper.navigation.update()
             }}
+            breakpoints={breakpoints}
           >
-            {contentTypes[contentType].slice(0, itemsInSwipe).map(item => {
-              if (contentType === 'Blogs') console.log(item)
+            {content.slice(0, itemsInSwipe).map(item => {
               return (
-                <SwiperSlide key={item.created_at}>
-                  {contentType === 'Blogs' &&
-                    <BlogSwiperCard
-                      key={item.created_at || item.id}
-                    />
-                  }
-                  {contentType === 'WpAndEbooks' &&
-                    <WESwiperCard
-                      key={item.created_at || item.id}
-                      Title={item.Title}
-                      Content={item.TextContent}
-                      Thumbnail={item?.Thumbnail?.url}
-                    />
-                  }
+                <SwiperSlide key={item.created_at || item.id}>
+                  <CardComponent {...item} />
                 </SwiperSlide>
               )
             })}

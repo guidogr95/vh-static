@@ -6,7 +6,7 @@ import Placeholder from 'public/assets/media/images/user.svg'
 const Avatar = ({ hideHalfCircle, halfCircleColor, picture, showCircle }) => {
     return (
         <>
-            <div className={`${!showCircle ? 'hideCircle' : ''}`} >
+            <div className={`${hideHalfCircle ? 'hideCircle' : ''}`} >
                 <a className="avatar-link" href="#" >
                     <img alt="profile picture" src={picture || Placeholder} />
                 </a>
@@ -36,7 +36,6 @@ const Avatar = ({ hideHalfCircle, halfCircleColor, picture, showCircle }) => {
                 .half-circle {
                     position: absolute;
                     bottom: 0;
-                    display: ${!hideHalfCircle ? 'initial' : 'none'};
                     left: 0;
                     width: 60px;
                     height: 48px;

@@ -4,6 +4,7 @@ import Pages from 'builder/data/pages.json'
 import WpAndEbooks from 'builder/data/wpandebooks.json'
 import NavButtons from 'builder/data/navButtons.json'
 import FooterData from 'builder/data/footerData.json'
+import BioPosts from 'builder/data/bioPosts.json'
 
 export {
   Blogs,
@@ -11,5 +12,6 @@ export {
   Pages,
   WpAndEbooks,
   NavButtons,
-  FooterData
+  FooterData,
+  BioPosts
 }

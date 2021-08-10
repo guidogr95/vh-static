@@ -45,7 +45,8 @@ export async function getStaticProps ({ params }) {
   const pageData = Pages.find(page => page.Slug === Slug)
   const Blogs = blogs.filter(blog => blog !== null).sort((a, b) => new Date(strapiDateToDateString(b.Publication)) - new Date(strapiDateToDateString(a.Publication)))
   const Tutorials = tutorials
-  return { props: { ...pageData, NavButtons, Pathname: Slug, Blogs, FooterData, Tutorials } }
+  const displayBg = false
+  return { props: { ...pageData, NavButtons, Slug, Blogs, FooterData, Tutorials, displayBg} }
 }
 
 export default slug

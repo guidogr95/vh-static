@@ -42,7 +42,6 @@ const AllBlogPosts = ({ Blogs }) => {
                 <main>
                     <ResourceSearchBar
                         Resources={Blogs}
-                        SlugPrefix="/blog"
                         Placeholder="Search Blog Posts..."
                     />
                     <h2 className="sectionTitle" >Latest Articles</h2>

@@ -22,7 +22,6 @@ const AllTutorials = ({ Tutorials, ComponentProps }) => {
                 <main>
                     <ResourceSearchBar
                         Resources={Tutorials}
-                        SlugPrefix="/resources/tutorials"
                         Placeholder="Search Tutorials..."
                     />
                     <h2 className="sectionTitle" >Latest Tutorials</h2>

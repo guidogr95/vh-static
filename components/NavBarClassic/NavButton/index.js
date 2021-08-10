@@ -40,6 +40,8 @@ const NavButton = ({ slug, label, submenu, index, linkType }) => {
         if (!e) return
 
         const navbar = document.getElementById('navbar')
+        const navContainer = document.getElementById('navContainer')
+        const isSticky = navContainer.classList.contains('sticky')
         let sibling = null
 
         if (e.target.classList.contains('submenu')) {
@@ -54,14 +56,14 @@ const NavButton = ({ slug, label, submenu, index, linkType }) => {
 
         if (sibling.classList.contains('active')) {
             sibling.style.maxHeight = `${sibling.scrollHeight}px`
-            navbar.style.maxHeight = `${navbar.scrollHeight + sibling.scrollHeight}px`
+            navbar.style.maxHeight = `${isSticky ? 205 : navbar.scrollHeight + sibling.scrollHeight}px`
             if (e.target.classList.contains('submenu')) {
                 const parent = sibling.parentElement.parentElement
                 parent.style.maxHeight = `${parent.scrollHeight + sibling.scrollHeight}px`
             }
         } else {
             sibling.style.maxHeight = '0px'
-            navbar.style.maxHeight = `${navbar.scrollHeight}px`
+            navbar.style.maxHeight = `${isSticky ? 205 : navbar.scrollHeight}px`
             if (e.target.classList.contains('submenu')) {
                 const parent = sibling.parentElement.parentElement
                 parent.style.maxHeight = `${parent.scrollHeight}px`
@@ -216,6 +218,11 @@ const NavButton = ({ slug, label, submenu, index, linkType }) => {
                 .menuItem-parent :global(.mobile-arrow) {
                     display: none;
                     font-size: 1.3em;
+                }
+                @media screen and (min-width: 1090px) {
+                    .dropdown {
+                        max-height: unset !important;
+                    }
                 }
                 @media screen and (max-width: 1090px) {
                     .submenu-label {

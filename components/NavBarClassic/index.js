@@ -16,22 +16,71 @@ const NavBar = ({ navButtons }) => {
     const [sticky, setSticky] = useState(false)
 
     const handleNav = () => {
+        if (!secondaryNavRef?.current || !navContainerRef?.current) return
         const navbar = document.getElementById('navbar')
         navbar.classList.toggle('active')
+        const navContainer = navContainerRef.current
+        const isSticky = navContainer.classList.contains('sticky')
+        // if (navbar.classList.contains('active')) {
+        //     navbar.style.maxHeight = `${navbar.scrollHeight}px`
+        // } else {
+        //     navbar.style.maxHeight = '0px'
+        // }
         if (navbar.classList.contains('active')) {
-            navbar.style.maxHeight = `${navbar.scrollHeight}px`
+            // old IE
+            if (document.all) {
+                navbar.style.setAttribute('cssText', `max-height: ${window.innerWidth <= 1090 && isSticky ? 205 : navbar.scrollHeight}px`)
+            // Modern browser
+            } else {
+                navbar.setAttribute('style', `max-height: ${window.innerWidth <= 1090 && isSticky ? 205 : navbar.scrollHeight}px`)
+            }
         } else {
-            navbar.style.maxHeight = '0px'
+            // old IE
+            if (document.all) {
+                navbar.style.setAttribute('cssText', 'max-height: 0px')
+            // Modern browser
+            } else {
+                navbar.setAttribute('style', 'max-height: 0px')
+            }
+            // navbar.setAttribute = '0px!important'
         }
     }
 
     const scrollHandler = () => {
         if (!secondaryNavRef?.current || !navContainerRef?.current) return
+        const navbar = document.getElementById('navbar')
         const navContainer = navContainerRef.current
         if (window.scrollY >= secondaryNavRef.current.offsetHeight) {
-            !navContainer.classList.contains('sticky') && setSticky(true)
+            if (!navContainer.classList.contains('sticky')) {
+                setSticky(true)
+                if (navbar.classList.contains('active')) {
+                    if (document.all) {
+                        navbar.style.setAttribute('cssText', 'max-height: 205px')
+                    // Modern browser
+                    } else {
+                        navbar.setAttribute('style', 'max-height: 205px')
+                    }
+                }
+            }
         } else {
-            navContainer.classList.contains('sticky') && setSticky(false)
+            if (navContainer.classList.contains('sticky')) {
+                setSticky(false)
+                if (navbar.classList.contains('active')) {
+                    if (document.all) {
+                        navbar.style.setAttribute('cssText', `max-height: ${navbar.scrollHeight}px`)
+                    // Modern browser
+                    } else {
+                        navbar.setAttribute('style', `max-height: ${navbar.scrollHeight}px`)
+                    }
+                } else {
+                    if (document.all) {
+                        navbar.style.setAttribute('cssText', `max-height: ${window.innerWidth <= 1090 ? `${0}px` : 'unset'}`)
+                    // Modern browser
+                    } else {
+                        navbar.setAttribute('style', `max-height: ${window.innerWidth <= 1090 ? `${0}px` : 'unset'}`)
+                    }
+                }
+            }
         }
     }
 
@@ -44,8 +93,54 @@ const NavBar = ({ navButtons }) => {
 
     return (
         <>
-            <div className={`navContainer${sticky ? ' sticky' : ''}`} ref={navContainerRef} id='navBar' >
+            <div id="navContainer" className={`navContainer${sticky ? ' sticky' : ''}`} ref={navContainerRef} >
                 <div className="secondary-nav-wrapper" ref={secondaryNavRef} >
+                    <div className="secondary-nav" >
+                        <div className="sec-item" >
+                            <a href="https://vexxhost.com/contact-us/" rel="noopener noreferer" >
+                                Contact Us
+                            </a>
+                        </div>
+                        <div className="sec-item" >
+                            <a href="https://status.vexxhost.com/" rel="noopener noreferer" >
+                                <span className="sec-item__icon" ><FaInfoCircle /></span>
+                                <span className="sec-item__text" >Status</span>
+                            </a>
+                        </div>
+                        <div className="sec-item signup" >
+                            <a href="https://secure.vexxhost.com/billing/register.php?flow=cloudconsole" rel="noopener noreferer" >
+                                <span className="sec-item__icon" ><FaUserPlus /></span>
+                                <span className="sec-item__text" >Sign Up</span>
+                            </a>
+                        </div>
+                        <div className="sec-item" >
+                            <a href="https://secure.vexxhost.com/billing/clientarea.php" rel="noopener noreferer" >
+                                <span className="sec-item__icon" ><FaSignInAlt /></span>
+                                <span className="sec-item__text" >Sign In</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <nav className="top" >
+                    <Link prefetch={false} href="/" >
+                        <a className="logoLink">
+                            <img className="navLogo" alt="standard-logo-horizontal" src={Logo} />
+                            <img className="navLogo sticky" alt="standard-logo-icon" src={LogoIcon} />
+                        </a>
+                    </Link>
+                    <button
+                        className="hamburger"
+                        onClick={handleNav}
+                    >
+                        <FaBars />
+                    </button>
+                    <NavMenu
+                        navButtons={navButtons}
+                    />
+                </nav>
+            </div>
+            <div className={`navContainer s2 ${sticky ? 'sticky-s2' : ''}`} id='navBar' >
+                <div className="secondary-nav-wrapper" >
                     <div className="secondary-nav" >
                         <div className="sec-item" >
                             <a href="https://vexxhost.com/contact-us/" rel="noopener noreferer" >
@@ -147,6 +242,15 @@ const NavBar = ({ navButtons }) => {
                     font-stretch: condensed;
                     z-index: 3;
                 }
+                .navContainer.s2 {
+                    visibility: hidden;
+                    position: absolute;
+                    z-index: 2;
+                    opacity: 0;
+                }
+                .navContainer.s2.sticky-s2 {
+                    position: relative;
+                }
                 nav {
                     max-width: 1100px;
                     width: 100%;
@@ -210,7 +314,7 @@ const NavBar = ({ navButtons }) => {
                 .navContainer.sticky .logoLink {
                     padding: 5px 0;
                 }
-                @media screen and (min-width: 1090px) {
+                @media screen and (min-width: 1091px) {
                     .navContainer.sticky :global(.menuItem) {
                         font-size: 14.5px;
                         color: ${colors.stickyNavColor};
@@ -242,6 +346,9 @@ const NavBar = ({ navButtons }) => {
                     }
                     .navContainer.sticky .logoLink {
                         padding: 20px 0;
+                    }
+                    .navContainer.sticky :global(.cool) {
+                        overflow: auto;
                     }
                 }
                 @media screen and (max-width: 800px) {

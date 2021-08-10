@@ -1,4 +1,5 @@
 export const breakpoints = {
+    largeDesktop: '1581px',
     mediumDesktop: '1366px',
     smallDesktop: '1040px',
     extraSmallDesktop: '990px',
@@ -51,8 +52,13 @@ export const shadows = {
   day: '20px 20px 60px #562ed9, -20px -20px 60px #743eff',
   white: '14px 14px 28px #f2f2f2, -14px -14px 28px #ffffff',
   cardRegular: '0px 20px 40px rgba(0, 0, 0, 0.12)',
-  cardSoft: '0px 4px 6px rgba(0, 0, 0, 0.12)'
+  cardRegularLift: '10px 20px 60px rgba(0, 0, 0, 0.10)',
+  cardSoft: '0px 4px 6px rgba(0, 0, 0, 0.12)',
+  btnSoft: '0px 2px 4px rgba(0, 0, 0, 0.08)',
+  btnSoftClick: '0px 2px 2px rgba(0, 0, 0, 0.1)'
 }
+
+export const fullViewportMaxHeight = 1000
 
 export const borderRadius = '6px'
 export const largeBorderRadius = '34px'
@@ -69,4 +75,9 @@ export const calculatorStyles = {
   pricingSectionMargin: '0 0 80px 0',
   pricingSectionPadding: '30px 40px',
   pricingSectionHeaderPadding: '30px 40px'
+}
+
+export const cardStackStyles = {
+  containerHeight: 100,
+  borderRadius: 7
 }

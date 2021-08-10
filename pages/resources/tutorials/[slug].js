@@ -9,7 +9,7 @@ const PublicationContent = dynamic(() => import('components/Shared/PublicationCo
 const SocialShareWidget = dynamic(() => import('components/Shared/SocialShareWidget'))
 const FallbackController = dynamic(() => import('components/Shared/FallbackController'))
 
-const slug = ({ Pathname, Title, Publisher, created_at, Content, Thumbnail, ThumbnailBgColorHex, TitleColor, LinkToResource }) => {
+const slug = ({ Title, Publisher, created_at, Content, Thumbnail, ThumbnailBgColorHex, TitleColor, LinkToResource }) => {
   return (
     <>
       <ArticleHead />
@@ -40,7 +40,7 @@ const slug = ({ Pathname, Title, Publisher, created_at, Content, Thumbnail, Thum
 
 export async function getStaticPaths () {
   // Get the paths we want to pre-render based on pages
-  const paths = Tutorials.map(page => `/resources/tutorials/${page.Slug.trim()}`)
+  const paths = Tutorials.map(page => `/${page.Slug.trim()}`)
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false }
@@ -48,8 +48,9 @@ export async function getStaticPaths () {
 
 // This also gets called at build time
 export async function getStaticProps ({ params }) {
-  const tutorial = Tutorials.find(tutorial => tutorial.Slug === params.slug)
-  return { props: { ...tutorial, NavButtons, FooterData, Pathname: params.slug } }
+  const pathPrefix = 'resources/tutorials/'
+  const tutorial = Tutorials.find(tutorial => tutorial.Slug === `${pathPrefix}${params.slug}`)
+  return { props: { ...tutorial, NavButtons, FooterData } }
 }
 
 export default slug

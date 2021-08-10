@@ -3,6 +3,8 @@ import { useState } from 'react'
 import Input from 'components/Shared/Input'
 import TextArea from 'components/Shared/TextArea'
 import Button from 'react-bootstrap/Button'
+// Theme
+import { breakpoints, mediumBorderRadius } from 'styles/theme'
 
 const ContactFormBasic = () => {
 
@@ -63,6 +65,16 @@ const ContactFormBasic = () => {
         form {
           display: flex;
           flex-direction: column;
+        }
+        @media screen and (max-width: ${breakpoints.tabletLarge}) {
+          h1 {
+            font-size: 2.2rem;
+          }
+          div,
+          form,
+          form :global(button) {
+            width: 100%;
+          }
         }
       `}</style>
     </>

@@ -7,7 +7,7 @@ import { useSpringUtils } from 'context/springContext'
 import useOnClickOutside from 'utils/useOnClickOutside'
 import useDebounce from 'utils/useDebounce'
 
-const ResourceSearchBar = ({ Resources, SlugPrefix, Placeholder }) => {
+const ResourceSearchBar = ({ Resources, Placeholder }) => {
 
     const { Transition } = useSpringUtils()
 
@@ -52,7 +52,7 @@ const ResourceSearchBar = ({ Resources, SlugPrefix, Placeholder }) => {
                         from={{ opacity: 0, transform: 'translateY(-10px)' }}
                         enter={{ opacity: 1, transform: 'translateY(0px)' }}
                         leave={{ opacity: 0, transform: 'translateY(-10px)' }}>
-                        {show => show && (Styles => <ResultsContainer Styles={Styles} Results={debouncedResults} SlugPrefix={SlugPrefix} />)}
+                        {(styles, show) => show && <ResultsContainer Styles={styles} Results={debouncedResults} />}
                     </Transition>
             </div>
             <style jsx>{`

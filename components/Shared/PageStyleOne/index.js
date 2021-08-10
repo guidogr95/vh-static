@@ -1,28 +1,16 @@
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 // Theme
 import { colors, largeBorderRadius } from 'styles/theme'
-// Utils
-import useWindowSize from 'utils/useWindowSize'
-import useDebounce from 'utils/useDebounce'
 
-const PageStyleOne = ({ children }) => {
+const PageStyleOne = ({ children, displayBg }) => {
 
   const bodyRef = useRef(null)
-
-  const windowSize = useWindowSize()
-  const debouncedWindowSize = useDebounce(windowSize, 400)
-
-  useEffect(() => {
-    const navBar = document.getElementById('navBar')
-    if (!bodyRef || !navBar) return
-    bodyRef.current.style.paddingTop = `${navBar.offsetHeight}px`
-  }, [debouncedWindowSize])
 
   return (
     <>
       <div className="header-container" >
         <div className="section-header__wrapper" >
-          <div className="section-header" >
+          <div className={`section-header${!displayBg ? ' hide-bg' : ' show-bg'}`} >
             <div className="circle-overlay" />
             <div className="circle-overlay" />
             <div className="circle-overlay" />
@@ -42,8 +30,9 @@ const PageStyleOne = ({ children }) => {
         }
         .header-container .section-header__wrapper {
           position: absolute;
-          padding: 20px 20px 0 20px;
-          min-height: 628px;
+          padding: 20px;
+          min-height: 840px;
+          max-height: 1000px;
           height: 100vh;
           left: 0;
           right: 0;
@@ -56,6 +45,12 @@ const PageStyleOne = ({ children }) => {
           position: relative;
           height: 100%;
           width: 100%;
+        }
+        .section-header.hide-bg {
+          background: none;
+        }
+        .section-header.hide-bg .circle-overlay {
+          display: none;
         }
         .section-header .circle-overlay {
           background: ${colors.lightPurple};

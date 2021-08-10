@@ -1,5 +1,7 @@
 // Assets
 import Infrastructure from 'public/assets/media/icons/infrastructure.svg'
+// Assets
+import { shadows, mediumBorderRadius } from 'styles/theme'
 
 const TwoColumnToutStyleOne = () => {
   return (
@@ -89,10 +91,22 @@ const TwoColumnToutStyleOne = () => {
           grid-template-columns: repeat(4, 1fr);
           grid-auto-rows: minmax(min-content, max-content);
           row-gap: 32px;
+          position: relative;
         }
-        .centeredBlock {
-          margin-right: 0;
-          width: 100%;
+        .tout__column-two-item {
+          position: relative;
+          z-index: 2;
+        }
+        .tout__column-two-items:after {
+          content: '';
+          position: absolute;
+          border-radius: ${mediumBorderRadius};
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: -50vw;
+          box-shadow: ${shadows.cardRegular};
+          z-index: 1;
         }
         .column-two-item__icon {
           height: 40px;

@@ -48,7 +48,7 @@ const ImageHeader = ({ ComponentProps }) => {
             from={{ transform: 'translateY(40px)', opacity: 0 }}
             enter={{ transform: 'translateY(0px)', opacity: 1 }}
             leave={{ transform: 'translateY(40px)', opacity: 0 }}>
-            {show => show && (props => <Thumbnail {...props} />)}
+            {(styles, show) => show && <Thumbnail {...styles} /> }
         </Transition>
     )
 
@@ -64,7 +64,7 @@ const ImageHeader = ({ ComponentProps }) => {
                             from={{ transform: 'translateX(-60px)', opacity: 0 }}
                             enter={{ transform: 'translateX(0px)', opacity: 1 }}
                             leave={{ transform: 'translateX(-60px)', opacity: 0 }}>
-                            {show => show && (props => <HeaderText {...props} />)}
+                            {(styles, show) => show && <HeaderText {...styles} /> }
                         </Transition>
                     </main>
                 </aside>

@@ -15,7 +15,7 @@ const BlogPostCard = ({ Title, PublicationDate, Author, Thumbnail, Slug, Thumbna
     return (
         <>
             <article>
-                <Link prefetch={false} href={`blog/${Slug}`}>
+                <Link prefetch={false} href={Slug}>
                     <a className={`_thumbnail${!Thumbnail ? ' no-thumbnail' : ''}${!loaded ? ' loading' : ''}`}>
                     </a>
                 </Link>
@@ -24,7 +24,7 @@ const BlogPostCard = ({ Title, PublicationDate, Author, Thumbnail, Slug, Thumbna
                         <time className="__post-time" >
                             {PublicationDate && strapiDateToDateString(PublicationDate)}
                         </time>
-                        <Link prefetch={false} href={`blog/${Slug}`}>
+                        <Link prefetch={false} href={Slug}>
                             <a>
                                 <h5>{Title}</h5>
                             </a>

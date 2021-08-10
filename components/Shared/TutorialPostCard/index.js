@@ -22,7 +22,7 @@ const TutorialPostCard = ({ Title, Thumbnail, Slug, Content }) => {
     return (
         <>
             <article>
-                <Link prefetch={false} href={`/resources/tutorials/${Slug}`}>
+                <Link prefetch={false} href={Slug}>
                     <a className="cover-link" >
                         <span>{Title}</span>
                     </a>
@@ -36,7 +36,7 @@ const TutorialPostCard = ({ Title, Thumbnail, Slug, Content }) => {
                         </div>
                     </div>
                     <div className="_footer" >
-                        <Link prefetch={false} href={`/resources/tutorials/${Slug}`}>
+                        <Link prefetch={false} href={Slug}>
                             <a>
                                 Read More <FiChevronRight />
                             </a>
@@ -64,6 +64,7 @@ const TutorialPostCard = ({ Title, Thumbnail, Slug, Content }) => {
                 }
                 .thumbnail.no-thumbnail {
                     position: relative;
+                    z-index: 1;
                 }
                 .thumbnail.no-thumbnail:after, 
                 .thumbnail.no-thumbnail:before {
@@ -143,6 +144,7 @@ const TutorialPostCard = ({ Title, Thumbnail, Slug, Content }) => {
                     bottom: 85px;
                     left: 0;
                     right: 0;
+                    z-index: 2;
                 }
                 article :global(.cover-link span) {
                     visibility: hidden;

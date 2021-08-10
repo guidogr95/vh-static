@@ -3,19 +3,19 @@ import { colors, mediumBorderRadius, shadows } from 'styles/theme'
 // Components
 import Button from 'react-bootstrap/Button'
 
-const WESwiperCard = ({ Title, Content, Thumbnail }) => {
+const WESwiperCard = ({ Title, TextContent, Thumbnail }) => {
   const contentMaxLength = 569
   return (
     <>
       <div className="block__card" >
-        <img src={Thumbnail} alt="book cover" />
+        <img src={Thumbnail?.url} alt="book cover" />
         <div className="card__body" >
           <h4 className="mb-none" >
             {Title}
           </h4>
-          {Content &&
+          {TextContent &&
             <p className="fw-300 mt-small mb-small" >
-              {Content.slice(0, contentMaxLength)}{Content.length > contentMaxLength && '...'}
+              {TextContent.slice(0, contentMaxLength)}{TextContent.length > contentMaxLength && '...'}
             </p>
           }
           <Button
@@ -35,8 +35,9 @@ const WESwiperCard = ({ Title, Content, Thumbnail }) => {
           column-gap: 30px;
           height: 100%;
         }
-        .block__card h4 {
-          color: ${colors.blueGray};
+        .block__card h4,
+        .card__body p {
+          color: ${colors.blackTwo};
         }
         .block__card img {
           width: 100%;

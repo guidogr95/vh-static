@@ -1,8 +1,7 @@
 // Utils
-import jsdom from 'jsdom'
-import { axios, dynamic } from 'utils/imports'
-// Contants
-import { apiUrl, apiToken } from 'config/constants'
+import { dynamic } from 'utils/imports/packages'
+// Site Data
+import { BioPosts } from 'utils/imports/siteData'
 // Theme
 import { breakpoints, colors, newDesktopMaxWidth } from 'styles/theme'
 // Assets
@@ -12,12 +11,7 @@ import BioPost from 'components/Bio/BioPost'
 const FallbackController = dynamic(() => import('components/Shared/FallbackController'))
 const PageStyleOne = dynamic(() => import('components/Shared/PageStyleOne'))
 
-const { JSDOM } = jsdom
-
-const bio = (props) => {
-  const {
-    content
-  } = props
+const bio = () => {
   return (
     <>
       <div>
@@ -28,7 +22,7 @@ const bio = (props) => {
               <h1>Content</h1>
             </header>
             <main>
-              {content.map((contentItem, index) => {
+              {BioPosts.map((contentItem, index) => {
                 const data = contentItem.Post
                 return (
                   <BioPost
@@ -89,21 +83,6 @@ const bio = (props) => {
       `}</style>
     </>
   )
-}
-
-export async function getStaticProps () {
-  const posts = await axios.get(`${apiUrl}/bio-posts`, { headers: { Authorization: `Bearer ${apiToken}` } })
-  posts.data.forEach(post => {
-    const domContent = new JSDOM(`<div class="domContent" >${post.Post.Content}</div>`)
-    post.Post.TextContent = `${domContent.window.document.querySelector('.domContent').textContent}`
-  })
-  posts.data = posts.data.sort((a, b) => a.id - b.id)
-  return {
-    props: {
-      // Blogs,
-      content: posts.data
-    }
-  }
 }
 
 export default bio

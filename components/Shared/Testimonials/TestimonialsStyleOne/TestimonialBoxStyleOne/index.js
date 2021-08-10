@@ -12,7 +12,7 @@ const TestimonialBoxStyleOne = () => {
         </span>
         <div className="client" >
             <Avatar
-              showCircle={false}
+              hideHalfCircle={true}
               picture="https://images.vexels.com/media/users/3/145908/preview2/52eabf633ca6414e60a7677b0b917d92-creador-de-avatar-masculino.jpg"
             />
             <div className="client__details" >

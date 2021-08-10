@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css'
 // theme
-import { colors, fonts, breakpoints, gradients, borderRadius, shadows, mediumBorderRadius } from 'styles/theme'
+import { colors, desktopMaxWidth, fonts, breakpoints, gradients, borderRadius, shadows, mediumBorderRadius } from 'styles/theme'
 
 export const globalStyles = css.global`
     html,
@@ -61,7 +61,7 @@ export const globalStyles = css.global`
         color: ${colors.whiteGray};
         letter-spacing: 0.03em;
         box-shadow: 5px 5px 20px rgba(160, 160, 160, 0.2);
-        padding: 8px 0.75rem;
+        padding: 4px 0.75rem;
         width: fit-content;
         width: max-content;
         width: min-content;
@@ -205,14 +205,17 @@ export const globalStyles = css.global`
         box-shadow: ${shadows.inputDarker};
     }
     .centeredBlock {
-        margin-left: 25vh;
-        margin-right: 25vh;
+        margin-left: 21vw;
+        margin-right: 21vw;
     }
     .mt-small {
         margin-top: 16px;
     }
     .mb-none {
         margin-bottom: 0;
+    }
+    .mb-xsmall {
+        margin-bottom: 8px;
     }
     .mb-small {
         margin-bottom: 16px;
@@ -261,16 +264,19 @@ export const globalStyles = css.global`
     .fw-300 {
         font-weight: 300;
     }
+    .fw-400 {
+        font-weight: 400;
+    }
     /* swiper content */
     /* Style 1 */
     .custom-swiper-nav--s1 {
-          display: grid;
-          column-gap: 20px;
-          grid-template-columns: repeat(2, 1fr);
-        }
-    .custom-swiper-nav--s1 button {
+        display: grid;
+        column-gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .nav-btn-base--1 {
         color: ${colors.lightPurple};
-        background: none;
+        background: ${colors.trueWhite};
         border: none;
         display: flex;
         align-items: center;
@@ -279,15 +285,25 @@ export const globalStyles = css.global`
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        transition: .3s ease-out all;
+        transition: .1s linear all;
+        box-shadow: ${shadows.btnSoft};
     }
-    .custom-swiper-nav--s1 .prev-button {
-        padding-right: 15%; 
+    .nav-btn-base--1:hover {
+        color: ${colors.white};
+        background: ${colors.lightPurple};
     }
-    .custom-swiper-nav--s1 .next-button {
-        padding-left: 15%; 
+    .nav-btn-base--1:active {
+        box-shadow: ${shadows.btnSoftClick};
+        background: ${colors.lightPurple}ed;
+        transform: translate3d(0px,2px,0px);
     }
-    .custom-swiper-nav--s1 .swiper-button-disabled {
+    .nav-btn-base--1.prev {
+        padding-right: 20%; 
+    }
+    .nav-btn-base--1.next {
+        padding-left: 20%; 
+    }
+    .nav-btn-base--1.swiper-button-disabled {
         opacity: 0.5;
     }
     /* touts */
@@ -303,10 +319,13 @@ export const globalStyles = css.global`
         grid-template-columns: 310px auto;
     }
     .two-column-tout--s1 .tout__column-two-items {
-        box-shadow: ${shadows.cardRegular};
-        border-radius: ${mediumBorderRadius};
-        overflow: hidden;
-        padding: 50px 25vh 50px 70px;
+        padding: 50px 0 50px 70px;
+    }
+    @media screen and (max-width: ${breakpoints.largeDesktop}) {
+        .centeredBlock {
+            margin-left: 10vw;
+            margin-right: 10vw;
+        }
     }
     @media screen and (max-width: ${breakpoints.mediumDesktop}) {
         .containerSection {

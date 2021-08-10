@@ -9,7 +9,7 @@ import Disk from 'public/assets/media/icons/hard-drive-white.svg'
 // Theme
 import { borderRadius, calculatorStyles, colors, gradients } from 'styles/theme'
 // Utils
-import { throttle } from 'utils/imports'
+import { throttle } from 'utils/imports/packages'
 import stickElementBetweenDivs from 'utils/stickElementBetweenDivs'
 // Context
 import { useSpringUtils } from 'context/springContext'

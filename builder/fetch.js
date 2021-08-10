@@ -5,8 +5,8 @@ const jsdom = require('jsdom')
 const strapiDateToDateString = require('../utils/strapiDateToDateString')
 const { JSDOM } = jsdom
 // Contants
-const apiUrl = 'https://strapi-pr-3-ufrr.onrender.com'
-const apiToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjIwODcxOTIzLCJleHAiOjE2MjM0NjM5MjN9.U-PfOaIBjKYqfjWpFKLbqa-Cc89M8JMPM7ZIBVwWir0'
+const apiUrl = 'http://localhost:1337'
+const apiToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjIzMTE4NTI3LCJleHAiOjE2MjU3MTA1Mjd9.IIjUYDGXfiF8BYLZW5TNosu4VAtYXEPaqKIOAeQPl1g'
 
 const fetchData = async () => {
   console.log('Started site data fetch')
@@ -15,6 +15,13 @@ const fetchData = async () => {
     const navButtons = navRes.data.MenuItemMain
     const footerRes = await axios.get(`${apiUrl}/footer`, { headers: { Authorization: `Bearer ${apiToken}` } })
     const footerData = footerRes.data
+    const bioLimit = await axios.get(`${apiUrl}/bio-posts/count`, { headers: { Authorization: `Bearer ${apiToken}` } })
+    const bioPosts = await axios.get(`${apiUrl}/bio-posts?_limit=${bioLimit.data}`, { headers: { Authorization: `Bearer ${apiToken}` } })
+    bioPosts.data.forEach(post => {
+      const domContent = new JSDOM(`<div class="domContent" >${post.Post.Content}</div>`)
+      post.Post.TextContent = `${domContent.window.document.querySelector('.domContent').textContent}`
+    })
+    bioPosts.data = bioPosts.data.sort((a, b) => a.id - b.id)
     const blogLimit = await axios.get(`${apiUrl}/blogs/count`, { headers: { Authorization: `Bearer ${apiToken}` } })
     const blogPosts = await axios.get(`${apiUrl}/blogs?_limit=${blogLimit.data}`, { headers: { Authorization: `Bearer ${apiToken}` } })
     const Blogs = blogPosts.data.filter(blog => blog !== null).sort((a, b) => new Date(strapiDateToDateString(b.Publication)) - new Date(strapiDateToDateString(a.Publication)))
@@ -39,6 +46,7 @@ const fetchData = async () => {
     fs.writeFileSync('builder/data/tutorials.json', JSON.stringify(tutorials.data))
     fs.writeFileSync('builder/data/wpandebooks.json', JSON.stringify(wpandebooks.data))
     fs.writeFileSync('builder/data/pages.json', JSON.stringify(pages.data))
+    fs.writeFileSync('builder/data/bioPosts.json', JSON.stringify(bioPosts.data))
     fs.writeFileSync('builder/data/navButtons.json', JSON.stringify(navButtons))
     fs.writeFileSync('builder/data/footerData.json', JSON.stringify(footerData))
     console.log('Data fetch and storage successful')

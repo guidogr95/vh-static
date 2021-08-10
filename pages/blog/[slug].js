@@ -58,7 +58,7 @@ const slug = (props) => {
 // This function gets called at build time
 export async function getStaticPaths () {
   // Get the paths we want tos pre-render based on pages
-  const paths = Blogs.map(page => `/blog/${page.Slug.trim()}`)
+  const paths = Blogs.map(page => `/${page.Slug.trim()}`)
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   // { fallback: true } means it will generate static files that were not generated at build time on demand
@@ -67,14 +67,13 @@ export async function getStaticPaths () {
 
 // This also gets called at build time
 export async function getStaticProps ({ params }) {
-  const blog = Blogs.find(blog => blog.Slug === params.slug)
+  const pathPrefix = 'blog/'
+  const blog = Blogs.find(blog => blog.Slug === `${pathPrefix}${params.slug}`)
   return {
     props: {
       ...blog,
       NavButtons,
-      FooterData,
-      Pathname: params.slug,
-      slugPrefix: '/blog'
+      FooterData
     }
   }
 }

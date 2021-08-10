@@ -62,7 +62,7 @@ const GridItem = React.memo(({ Page, Thumbnail, Title, index, LinkType, CustomLi
                             from={{ transform: 'translate3d(0,40px,0)' }}
                             enter={{ transform: 'translate3d(0,0px,0)' }}
                             leave={{ transform: 'translate3d(0,40px,0)' }}>
-                            {show => show && (props => <Img {...props} />)}
+                            {(styles, show) => show && <Img {...styles} />}
                         </Transition>
                     </div>
             </article>
@@ -96,7 +96,7 @@ const GridItem = React.memo(({ Page, Thumbnail, Title, index, LinkType, CustomLi
                 .body span {
                     color: ${colors.whiteGray};
                     font-weight: 500;
-                    font-size: 2em;
+                    font-size: 1.7em;
                     letter-spacing: 0.06em;
                     text-transform: uppercase;
                 }

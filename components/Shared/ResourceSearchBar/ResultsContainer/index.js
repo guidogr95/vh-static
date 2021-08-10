@@ -1,15 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
 // Utils
 import useOnScreen from 'utils/useOnScreen'
+import { useSpringUtils } from 'context/springContext'
 // Components
 import SearchResult from './SearchResult'
 // Theme
 import { colors } from 'styles/theme'
 
-const ResultsContainer = ({ Styles, Results, SlugPrefix }) => {
+const ResultsContainer = ({ Styles, Results }) => {
 
     const visorRef = useRef()
 
+    const { animated } = useSpringUtils()
     const [nResults, setNResults] = useState(8)
     const addOnInfinity = 8
 
@@ -31,7 +33,7 @@ const ResultsContainer = ({ Styles, Results, SlugPrefix }) => {
 
     return (
         <>
-            <div
+            <animated.div
                 className="results-container"
                 style={Styles}
             >
@@ -43,7 +45,7 @@ const ResultsContainer = ({ Styles, Results, SlugPrefix }) => {
                                     <SearchResult
                                         key={`${resource.Slug}${index}`}
                                         Title={resource.Title}
-                                        Slug={`${SlugPrefix || ''}/${resource.Slug}`}
+                                        Slug={resource.Slug}
                                         Thumbnail={resource?.Thumbnail?.formats?.small?.url}
                                     />
                                 )
@@ -53,7 +55,7 @@ const ResultsContainer = ({ Styles, Results, SlugPrefix }) => {
                         <div id="visor" ref={visorRef}/>
                     </div>
                 </div>
-            </div>
+            </animated.div>
             <style jsx>{`
                 #visor {
                     height: 2px;

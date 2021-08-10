@@ -9,7 +9,6 @@ import EdgeComputingIcon from 'components/Shared/EdgeComputingIcon'
 import KubernetesIcon from 'components/Shared/KubernetesIcon'
 import ZuulIcon from 'components/Shared/ZuulIcon'
 import GpuIcon from 'components/Shared/GpuIcon'
-import { prodHost } from 'config/constants'
 
 const iconRenderer = (label) => {
     switch (label.toLowerCase()) {
@@ -32,12 +31,12 @@ const iconRenderer = (label) => {
     }
 }
 
-const BlogNavItem = ({ slug, label, pathname }) => {
+const BlogNavItem = ({ slug, label }) => {
 
     return (
         <>
             <li>
-                <Link prefetch={false} href={slug ? `${prodHost}/blog/${slug}` : ''}>
+                <Link prefetch={false} href={slug}>
                     <a>
                     {iconRenderer(label)}<span>{label}</span>
                     </a>
