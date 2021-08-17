@@ -26,6 +26,9 @@ const ItemPicker = ({ pricingTable, value, onClick }) => {
           gap: 20px;
           margin: ${calculatorStyles.basicSubElementMargin};
         }
+        .item-picker :global(button) {
+          width: 100%;
+        }
       `}</style>
     </>
   )

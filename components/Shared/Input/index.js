@@ -5,7 +5,7 @@ const Input = forwardRef((props, ref) => {
     const innerSize = size || 'regular'
     return (
         <>
-            <input {...props} ref={ref} className={`form-control me-2 ${innerSize}${hideHandles ? ' hide-handles' : ''}${className && ` ${className}`}`} />
+            <input {...props} ref={ref} className={`form-control me-2 ${innerSize}${hideHandles ? ' hide-handles' : ''}${className ? ` ${className}` : ''}`} />
             <style jsx>{`
                 .small {
                     height: 40px;

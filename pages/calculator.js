@@ -1,24 +1,11 @@
 import PricingCalculator from 'components/Shared/PricingCalculator'
 import { newDesktopMaxWidth } from 'styles/theme'
 
-const test = () => {
+const calculator = () => {
   return (
     <>
       <div>
-        {/* <RangeSlider /> */}
         <PricingCalculator />
-        <div><br/></div>
-        <div><br/></div>
-        <div><br/></div>
-        <div><br/></div>
-        <div><br/></div>
-        <div><br/></div>
-        <div><br/></div>
-        <div><br/></div>
-        <div><br/></div>
-        <div><br/></div>
-        <div><br/></div>
-        <div><br/></div>
       </div>
       <style jsx>{`
         div {
@@ -34,4 +21,4 @@ const test = () => {
   )
 }
 
-export default test
+export default calculator
