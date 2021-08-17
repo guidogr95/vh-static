@@ -1,0 +1,541 @@
+[{
+  "id": 1,
+  "Label": "Private Cloud",
+  "Page": null,
+  "LinkType": "Custom",
+  "CustomLink": "/private-cloud/",
+  "NavSubmenu": []
+}, {
+  "id": 2,
+  "Label": "Public Cloud",
+  "Page": null,
+  "LinkType": "Custom",
+  "CustomLink": "/public-cloud/",
+  "NavSubmenu": [{
+    "id": 1,
+    "Label": "",
+    "SubMenuItem": [{
+      "id": 1,
+      "Label": "Overview",
+      "Page": null,
+      "LinkType": "Custom",
+      "CustomLink": "/public-cloud/"
+    }, {
+      "id": 2,
+      "Label": "Services",
+      "Page": null,
+      "LinkType": "Custom",
+      "CustomLink": "/public-cloud/services/"
+    }, {
+      "id": 3,
+      "Label": "Pricing",
+      "Page": null,
+      "LinkType": "Custom",
+      "CustomLink": "/pricing/"
+    }]
+  }]
+}, {
+  "id": 3,
+  "Label": "Solutions",
+  "Page": null,
+  "LinkType": "Custom",
+  "CustomLink": "/solutions/",
+  "NavSubmenu": [{
+    "id": 2,
+    "Label": "OpenStack Solutions",
+    "SubMenuItem": [{
+      "id": 4,
+      "Label": "OpenStack Consulting",
+      "Page": null,
+      "LinkType": "Custom",
+      "CustomLink": "/solutions/openstack-consulting/"
+    }, {
+      "id": 5,
+      "Label": "OpenStack Upgrades",
+      "Page": null,
+      "LinkType": "Custom",
+      "CustomLink": "/solutions/openstack-upgrades/"
+    }]
+  }, {
+    "id": 3,
+    "Label": "Managed Solutions",
+    "SubMenuItem": [{
+      "id": 6,
+      "Label": "Kubernetes Enablement",
+      "Page": null,
+      "LinkType": "Custom",
+      "CustomLink": "/solutions/kubernetes-enablement/"
+    }, {
+      "id": 7,
+      "Label": "Managed Zuul",
+      "Page": null,
+      "LinkType": "Custom",
+      "CustomLink": "/solutions/managed-zuul/"
+    }]
+  }]
+}, {
+  "id": 4,
+  "Label": "Resources",
+  "Page": {
+    "id": 1,
+    "Title": "Resources",
+    "Slug": "resources",
+    "Parent": null,
+    "published_at": "2021-03-25T15:38:34.231Z",
+    "created_by": 3,
+    "updated_by": 3,
+    "created_at": "2021-03-25T15:37:11.225Z",
+    "updated_at": "2021-03-30T06:41:28.020Z"
+  },
+  "LinkType": "Page",
+  "CustomLink": null,
+  "NavSubmenu": [{
+    "id": 6,
+    "Label": "Learning",
+    "SubMenuItem": [{
+      "id": 14,
+      "Label": "Blog",
+      "Page": {
+        "id": 2,
+        "Title": "Blog",
+        "Slug": "blog",
+        "Parent": null,
+        "published_at": "2021-03-25T15:39:37.126Z",
+        "created_by": 3,
+        "updated_by": 3,
+        "created_at": "2021-03-25T15:39:35.100Z",
+        "updated_at": "2021-03-29T10:36:40.916Z"
+      },
+      "LinkType": "Page",
+      "CustomLink": null
+    }, {
+      "id": 15,
+      "Label": "eBooks and Whitepapers",
+      "Page": {
+        "id": 3,
+        "Title": "Whitepapers and eBooks",
+        "Slug": "white-paper",
+        "Parent": null,
+        "published_at": "2021-03-25T15:43:27.935Z",
+        "created_by": 3,
+        "updated_by": 3,
+        "created_at": "2021-03-25T15:41:12.610Z",
+        "updated_at": "2021-03-29T09:49:31.202Z"
+      },
+      "LinkType": "Page",
+      "CustomLink": null
+    }, {
+      "id": 16,
+      "Label": "Tutorials",
+      "Page": {
+        "id": 7,
+        "Title": "Tutorials",
+        "Slug": "tutorials",
+        "Parent": null,
+        "published_at": "2021-03-30T06:38:43.688Z",
+        "created_by": 3,
+        "updated_by": 3,
+        "created_at": "2021-03-30T06:38:24.871Z",
+        "updated_at": "2021-03-30T06:38:45.529Z"
+      },
+      "LinkType": "Page",
+      "CustomLink": "/tutorials/"
+    }]
+  }, {
+    "id": 7,
+    "Label": "Explore",
+    "SubMenuItem": [{
+      "id": 17,
+      "Label": "Success Stories",
+      "Page": null,
+      "LinkType": "Custom",
+      "CustomLink": "/case-studies/"
+    }, {
+      "id": 18,
+      "Label": "FAQs",
+      "Page": {
+        "id": 5,
+        "Title": "FAQs",
+        "Slug": "faq",
+        "Parent": null,
+        "published_at": "2021-03-25T16:34:12.622Z",
+        "created_by": 3,
+        "updated_by": 3,
+        "created_at": "2021-03-25T16:33:05.066Z",
+        "updated_at": "2021-03-29T10:38:24.940Z"
+      },
+      "LinkType": "Page",
+      "CustomLink": null
+    }, {
+      "id": 19,
+      "Label": "Videos",
+      "Page": {
+        "id": 4,
+        "Title": "Videos",
+        "Slug": "videos",
+        "Parent": {
+          "id": 1,
+          "Title": "Resources",
+          "Slug": "resources",
+          "Parent": null,
+          "published_at": "2021-03-25T15:38:34.231Z",
+          "created_by": {
+            "id": 3,
+            "firstname": "Guido",
+            "lastname": "Guevara Rueda",
+            "username": null,
+            "email": "grueda@vexxhost.com",
+            "password": "$2a$10$Hx4F84TBG3L69QA1NsOWQepNLu/Q8e3TuNYCusiGYYOMidJzAb4Li",
+            "resetPasswordToken": null,
+            "registrationToken": "77ce795aa809093d35e00617d34e35a86d74d591",
+            "isActive": true,
+            "blocked": null,
+            "preferedLanguage": null
+          },
+          "updated_by": {
+            "id": 3,
+            "firstname": "Guido",
+            "lastname": "Guevara Rueda",
+            "username": null,
+            "email": "grueda@vexxhost.com",
+            "password": "$2a$10$Hx4F84TBG3L69QA1NsOWQepNLu/Q8e3TuNYCusiGYYOMidJzAb4Li",
+            "resetPasswordToken": null,
+            "registrationToken": "77ce795aa809093d35e00617d34e35a86d74d591",
+            "isActive": true,
+            "blocked": null,
+            "preferedLanguage": null
+          },
+          "created_at": "2021-03-25T15:37:11.225Z",
+          "updated_at": "2021-03-30T06:41:28.020Z",
+          "Body": [{
+            "__component": "universal.image-header",
+            "id": 1,
+            "Title": "Resources",
+            "Subtitle": "Explore our diverse and extensive types of material and get started on your journey to a better understanding of cloud computing and cloud infrastructure basics.",
+            "Background": "linear-gradient(to right, rgb(101, 54, 255), rgb(42, 22, 89)) no-repeat",
+            "TitleColor": "white",
+            "SubtitleColor": "white",
+            "HeaderImage": "Resources",
+            "Image": null
+          }, {
+            "__component": "universal.card-grid-thumbnail-and-icon",
+            "id": 1,
+            "CardGridItem": [{
+              "id": 1,
+              "Title": "BLOGS",
+              "Page": {
+                "id": 2,
+                "Title": "Blog",
+                "Slug": "blog",
+                "Parent": null,
+                "published_at": "2021-03-25T15:39:37.126Z",
+                "created_by": 3,
+                "updated_by": 3,
+                "created_at": "2021-03-25T15:39:35.100Z",
+                "updated_at": "2021-03-29T10:36:40.916Z"
+              },
+              "LinkType": "Page",
+              "CustomLink": null,
+              "Thumbnail": {
+                "id": 554,
+                "name": "blogging1_Artboard 1.svg",
+                "alternativeText": "",
+                "caption": "",
+                "width": 250,
+                "height": 250,
+                "formats": null,
+                "hash": "blogging1_Artboard_1_c875e9c435",
+                "ext": ".svg",
+                "mime": "image/svg+xml",
+                "size": 8.27,
+                "url": "https://res.cloudinary.com/vexxhost/image/upload/v1616695447/blogging1_Artboard_1_c875e9c435.svg",
+                "previewUrl": null,
+                "provider": "cloudinary",
+                "provider_metadata": {
+                  "public_id": "blogging1_Artboard_1_c875e9c435",
+                  "resource_type": "image"
+                },
+                "created_by": 3,
+                "updated_by": 3,
+                "created_at": "2021-03-25T18:04:09.174Z",
+                "updated_at": "2021-03-25T18:04:09.877Z"
+              }
+            }, {
+              "id": 2,
+              "Title": "SUCCESS STORIES",
+              "Page": null,
+              "LinkType": "Custom",
+              "CustomLink": "https://vexxhost.com/case-studies/",
+              "Thumbnail": {
+                "id": 555,
+                "name": "videos_Artboard 11-01.svg",
+                "alternativeText": "",
+                "caption": "",
+                "width": 250,
+                "height": 250,
+                "formats": null,
+                "hash": "videos_Artboard_11_01_cd1911b582",
+                "ext": ".svg",
+                "mime": "image/svg+xml",
+                "size": 5.67,
+                "url": "https://res.cloudinary.com/vexxhost/image/upload/v1616695495/videos_Artboard_11_01_cd1911b582.svg",
+                "previewUrl": null,
+                "provider": "cloudinary",
+                "provider_metadata": {
+                  "public_id": "videos_Artboard_11_01_cd1911b582",
+                  "resource_type": "image"
+                },
+                "created_by": 3,
+                "updated_by": 3,
+                "created_at": "2021-03-25T18:04:57.160Z",
+                "updated_at": "2021-03-25T18:04:57.957Z"
+              }
+            }, {
+              "id": 3,
+              "Title": "FAQS",
+              "Page": {
+                "id": 5,
+                "Title": "FAQs",
+                "Slug": "faq",
+                "Parent": null,
+                "published_at": "2021-03-25T16:34:12.622Z",
+                "created_by": 3,
+                "updated_by": 3,
+                "created_at": "2021-03-25T16:33:05.066Z",
+                "updated_at": "2021-03-29T10:38:24.940Z"
+              },
+              "LinkType": "Page",
+              "CustomLink": null,
+              "Thumbnail": {
+                "id": 556,
+                "name": "QMARK-01.svg",
+                "alternativeText": "",
+                "caption": "",
+                "width": 250,
+                "height": 250,
+                "formats": null,
+                "hash": "QMARK_01_50704be9ea",
+                "ext": ".svg",
+                "mime": "image/svg+xml",
+                "size": 2.1,
+                "url": "https://res.cloudinary.com/vexxhost/image/upload/v1616696017/QMARK_01_50704be9ea.svg",
+                "previewUrl": null,
+                "provider": "cloudinary",
+                "provider_metadata": {
+                  "public_id": "QMARK_01_50704be9ea",
+                  "resource_type": "image"
+                },
+                "created_by": 3,
+                "updated_by": 3,
+                "created_at": "2021-03-25T18:13:38.718Z",
+                "updated_at": "2021-03-25T18:13:39.356Z"
+              }
+            }, {
+              "id": 4,
+              "Title": "EBOOKS AND WHITEPAPERS",
+              "Page": {
+                "id": 3,
+                "Title": "Whitepapers and eBooks",
+                "Slug": "white-paper",
+                "Parent": null,
+                "published_at": "2021-03-25T15:43:27.935Z",
+                "created_by": 3,
+                "updated_by": 3,
+                "created_at": "2021-03-25T15:41:12.610Z",
+                "updated_at": "2021-03-29T09:49:31.202Z"
+              },
+              "LinkType": "Page",
+              "CustomLink": null,
+              "Thumbnail": {
+                "id": 557,
+                "name": "videos2_Artboard 1-01.svg",
+                "alternativeText": "",
+                "caption": "",
+                "width": 250,
+                "height": 250,
+                "formats": null,
+                "hash": "videos2_Artboard_1_01_3aadfbe236",
+                "ext": ".svg",
+                "mime": "image/svg+xml",
+                "size": 8.06,
+                "url": "https://res.cloudinary.com/vexxhost/image/upload/v1616697786/videos2_Artboard_1_01_3aadfbe236.svg",
+                "previewUrl": null,
+                "provider": "cloudinary",
+                "provider_metadata": {
+                  "public_id": "videos2_Artboard_1_01_3aadfbe236",
+                  "resource_type": "image"
+                },
+                "created_by": 3,
+                "updated_by": 3,
+                "created_at": "2021-03-25T18:43:07.634Z",
+                "updated_at": "2021-03-25T18:43:08.305Z"
+              }
+            }, {
+              "id": 5,
+              "Title": "TUTORIALS",
+              "Page": {
+                "id": 7,
+                "Title": "Tutorials",
+                "Slug": "tutorials",
+                "Parent": null,
+                "published_at": "2021-03-30T06:38:43.688Z",
+                "created_by": 3,
+                "updated_by": 3,
+                "created_at": "2021-03-30T06:38:24.871Z",
+                "updated_at": "2021-03-30T06:38:45.529Z"
+              },
+              "LinkType": "Page",
+              "CustomLink": "https://vexxhost.com/tutorials/",
+              "Thumbnail": {
+                "id": 558,
+                "name": "faq_Artboard 1.svg",
+                "alternativeText": "",
+                "caption": "",
+                "width": 250,
+                "height": 250,
+                "formats": null,
+                "hash": "faq_Artboard_1_d9cad513f6",
+                "ext": ".svg",
+                "mime": "image/svg+xml",
+                "size": 9.38,
+                "url": "https://res.cloudinary.com/vexxhost/image/upload/v1616697926/faq_Artboard_1_d9cad513f6.svg",
+                "previewUrl": null,
+                "provider": "cloudinary",
+                "provider_metadata": {
+                  "public_id": "faq_Artboard_1_d9cad513f6",
+                  "resource_type": "image"
+                },
+                "created_by": 3,
+                "updated_by": 3,
+                "created_at": "2021-03-25T18:45:28.071Z",
+                "updated_at": "2021-03-25T18:45:28.668Z"
+              }
+            }, {
+              "id": 6,
+              "Title": "VIDEOS",
+              "Page": {
+                "id": 4,
+                "Title": "Videos",
+                "Slug": "videos",
+                "Parent": 1,
+                "published_at": "2021-03-25T16:19:46.143Z",
+                "created_by": 3,
+                "updated_by": 3,
+                "created_at": "2021-03-25T16:09:00.910Z",
+                "updated_at": "2021-03-29T09:47:32.585Z"
+              },
+              "LinkType": "Page",
+              "CustomLink": null,
+              "Thumbnail": {
+                "id": 559,
+                "name": "videos_Artboard 1.svg",
+                "alternativeText": "",
+                "caption": "",
+                "width": 250,
+                "height": 250,
+                "formats": null,
+                "hash": "videos_Artboard_1_aa02b91d74",
+                "ext": ".svg",
+                "mime": "image/svg+xml",
+                "size": 11.21,
+                "url": "https://res.cloudinary.com/vexxhost/image/upload/v1616698072/videos_Artboard_1_aa02b91d74.svg",
+                "previewUrl": null,
+                "provider": "cloudinary",
+                "provider_metadata": {
+                  "public_id": "videos_Artboard_1_aa02b91d74",
+                  "resource_type": "image"
+                },
+                "created_by": 3,
+                "updated_by": 3,
+                "created_at": "2021-03-25T18:47:54.063Z",
+                "updated_at": "2021-03-25T18:47:54.637Z"
+              }
+            }]
+          }],
+          "PostSEO": {
+            "id": 472,
+            "GoogleSEO": {
+              "id": 463,
+              "Title": "Resources - VEXXHOST",
+              "Description": "Explore our diverse & extensive material. Get started on your journey to a better understanding of cloud computing & cloud infrastructure basics."
+            },
+            "FacebookSEO": {
+              "id": 459,
+              "Title": "Resources - VEXXHOST",
+              "Url": null,
+              "Description": "Explore our diverse & extensive material. Get started on your journey to a better understanding of cloud computing & cloud infrastructure basics.",
+              "SiteName": "VEXXHOST",
+              "Image": null
+            },
+            "TwitterSEO": {
+              "id": 459,
+              "Description": "Explore our diverse & extensive material. Get started on your journey to a better understanding of cloud computing & cloud infrastructure basics.",
+              "Title": "Resources - VEXXHOST",
+              "Site": "@vexxhost",
+              "Creator": "@vexxhost",
+              "Image": null
+            }
+          }
+        },
+        "published_at": "2021-03-25T16:19:46.143Z",
+        "created_by": 3,
+        "updated_by": 3,
+        "created_at": "2021-03-25T16:09:00.910Z",
+        "updated_at": "2021-03-29T09:47:32.585Z"
+      },
+      "LinkType": "Page",
+      "CustomLink": null
+    }]
+  }]
+}, {
+  "id": 5,
+  "Label": "VEXXHOST",
+  "Page": null,
+  "LinkType": "Custom",
+  "CustomLink": "/company/",
+  "NavSubmenu": [{
+    "id": 4,
+    "Label": "About Us",
+    "SubMenuItem": [{
+      "id": 8,
+      "Label": "Company",
+      "Page": null,
+      "LinkType": "Custom",
+      "CustomLink": "/company/"
+    }, {
+      "id": 9,
+      "Label": "Data Centers",
+      "Page": null,
+      "LinkType": "Custom",
+      "CustomLink": "/company/data-centers/"
+    }, {
+      "id": 10,
+      "Label": "Brand Guide",
+      "Page": null,
+      "LinkType": "Custom",
+      "CustomLink": "/company/brand-guidelines/"
+    }]
+  }, {
+    "id": 5,
+    "Label": "Development",
+    "SubMenuItem": [{
+      "id": 11,
+      "Label": "Newsroom",
+      "Page": null,
+      "LinkType": "Custom",
+      "CustomLink": "/company/newsroom/"
+    }, {
+      "id": 12,
+      "Label": "Events",
+      "Page": null,
+      "LinkType": "Custom",
+      "CustomLink": "/events/"
+    }, {
+      "id": 13,
+      "Label": "Careers",
+      "Page": null,
+      "LinkType": "Custom",
+      "CustomLink": "/company/careers/"
+    }]
+  }]
+}]

@@ -1,6 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 /.history
-/builder/data/*.json
+/builder/fetch.js
 
 # dependencies
 /node_modules
